@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Coca-Cola",
+        "price": 1.95,
+        "picture": "assets/coca-cola.jpg",
+        "category": "Frisdrank"
+    },
+    {
+        "name": "Coca-Cola Zero",
+        "price": 1.95,
+        "picture": "assets/coca-cola-zero.jpg",
+        "category": "Frisdrank"
+    },
+    {
+        "name": "Lipton Ice-Tea",
+        "price": 1.95,
+        "picture": "assets/ice-tea.webp",
+        "category": "Frisdrank"
+    },
+    {
+        "name": "Fanta",
+        "price": 1.95,
+        "picture": "assets/fanta.webp",
+        "category": "Frisdrank"
+    },
+    {
+        "name": "Stella",
+        "price": 2.95,
+        "picture": "assets/stella.png",
+        "category": "Bieren"
+    },
+    {
+        "name": "Omer",
+        "price": 2.95,
+        "picture": "assets/omer.png",
+        "category": "Bieren"
+    },
+    {
+        "name": "Duvel",
+        "price": 2.95,
+        "picture": "assets/duvel.png",
+        "category": "Bieren"
+    },
+    {
+        "name": "Lipton Ice-Tea",
+        "price": 1.95,
+        "picture": "assets/ice-tea.webp",
+        "category": "Meer frisdrank"
+    },
+    {
+        "name": "Fanta",
+        "price": 1.95,
+        "picture": "assets/fanta.webp",
+        "category": "Meer frisdrank"
+    }
+]
