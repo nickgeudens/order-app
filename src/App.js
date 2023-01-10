@@ -2,7 +2,11 @@ import React from 'react';
 import './App.css';
 
 import menu from "./menu.json"
-import { ButtonGroup, Button,Badge, Container, Table, Row, Image, Navbar, Modal } from 'react-bootstrap';
+import { Button, Badge, Container, Table, Row, Navbar,Nav, Modal, Image } from 'react-bootstrap';
+import { BrowserRouter } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
+import Item from './item';
+import Link from 'react-scroll'
 
 class App extends React.Component {
   constructor(props) {
@@ -18,8 +22,8 @@ class App extends React.Component {
     };
   }
 
-  groupItems(){
-    const grouped = this.state.menu_items.reduce((group, item, index) => {
+  getGroupedItems(){
+    return this.state.menu_items.reduce((group, item, index) => {
       if(!group[item.category]){
         group[item.category] = []
       }
@@ -27,47 +31,15 @@ class App extends React.Component {
       group[item.category].push(item);
       return group;
     }, {});
-
-    return Object.keys(grouped).map(category => (
-      <Row>
-      <h2>{category}</h2>
-      <Table striped>
-        <tbody>
-          {grouped[category].map(item => (
-            <tr key={item.index}>
-            <td className="p-2">
-                <Image
-                  style={{ height: "4em" }}
-                  thumbnail
-                  src={item.picture}
-                  >
-                </Image>
-              </td>
-            <td className="p-2">
-              {item.name}
-            </td>
-            <td className="p-2">
-              €{item.price}
-              <ButtonGroup className="me-2" aria-label="First group" size="sm">
-                <Button variant="info" onClick={() => this.decrementItem(item.id)}><strong>-</strong></Button>
-                <Button variant="secondary">{item.amount}</Button>
-                <Button variant="info" onClick={() => this.incrementItem(item.id)}><strong>+</strong></Button>
-              </ButtonGroup>
-            </td>
-          </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Row>))
   }
 
   incrementItem(i){
+    
     const items = this.state.menu_items.slice();
     items[i].amount ++
     this.setState({
       menu_items: items,
       total: this.state.total + 1,
-      showBasket: this.state.showBasket
     })
   }
 
@@ -78,7 +50,6 @@ class App extends React.Component {
       this.setState({
         menu_items: items,
         total: this.state.total - 1,
-        showBasket: this.state.showBasket
       })
     }
   }
@@ -90,10 +61,45 @@ class App extends React.Component {
   }
 
   render() {
+    const grouped = this.getGroupedItems()
     return (
-      <>
-        <Container className="mt-3" style={{ paddingBottom: this.state.total > 0? "7em": "0" }}>
-          {this.groupItems()}
+        <BrowserRouter>
+          <Image thumbnail
+            src="https://cafehettolhuis.nl/wp/wp-content/uploads/cafe-t-tolhuis-hilversum-slider-3.jpg"
+          />
+          <h1>Cafeke</h1>
+          <Navbar bg="light" variant="pills" sticky="top" className='py-0'>
+            <Container fluid>
+              <Nav>
+              {Object.keys(grouped).map(category => (
+                  <Nav.Link active="true"><HashLink to={"#" + category.toLowerCase()} activeClassName="selected">
+                   {category}
+                  </HashLink></Nav.Link>
+              ))}
+              </Nav>
+            </Container>
+          </Navbar>
+        <Container className="mt-3" style={{ paddingBottom: this.state.total > 0? "7em": "0"}}>
+          {Object.keys(grouped).map(category => (
+            <section  id={category.toLowerCase()}>
+              <Image thumbnail style={{height: "6em", width:"100vw"}}
+              src='https://d2j6dbq0eux0bg.cloudfront.net/images/29466296/1759355392.jpg'/>
+              <Row>
+                <h2>{category}</h2>
+                <Table striped>
+                  <tbody>
+                    {grouped[category].map(item => (
+                      <Item key={item.id}
+                        item={item}
+                        increment={() => this.incrementItem(item.id)}
+                        decrement={() => this.decrementItem(item.id)}
+                      />
+                    ))}
+                  </tbody>
+                </Table>
+              </Row>
+            </section>
+            ))}
         </Container>
         {this.state.total > 0?
           <Navbar 
@@ -133,7 +139,7 @@ class App extends React.Component {
               </Button>
             </Modal.Footer>
           </Modal>
-      </>
+        </BrowserRouter>
     );
   }
 }
