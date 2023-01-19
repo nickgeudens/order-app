@@ -11,6 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-html {
-  scroll-padding-top: 4rem;
+
+::-webkit-scrollbar {
+  display: none;
+}
+body::-webkit-scrollbar{
+  display: none;
+}
+.badge-hover{
+  transition: 150ms;
+}
+.badge-hover:hover {
+  cursor: pointer;
+  filter: brightness(95%);
+}
+.badge-hover:active {
+  cursor: pointer;
+  filter: brightness(85%);
 }

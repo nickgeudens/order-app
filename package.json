@@ -11,10 +11,9 @@
     "react-d3-library": "^1.0.4",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "react-router-dom": "^6.6.1",
-    "react-router-hash-link": "^2.4.3",
     "react-scripts": "^5.0.1",
-    "react-scroll": "^1.8.9"
+    "react-scroll": "^1.8.9",
+    "swiper": "^8.4.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,98 +1,105 @@
 [
-    {
-        "name": "Coca-Cola",
-        "price": 1.95,
-        "picture": "assets/coca-cola.jpg",
-        "category": "Frisdrank"
-    },
-    {
-        "name": "Coca-Cola Zero",
-        "price": 1.95,
-        "picture": "assets/coca-cola-zero.jpg",
-        "category": "Frisdrank"
-    },
-    {
-        "name": "Lipton Ice-Tea",
-        "price": 1.95,
-        "picture": "assets/ice-tea.webp",
-        "category": "Frisdrank"
-    },
-    {
-        "name": "Fanta",
-        "price": 1.95,
-        "picture": "assets/fanta.webp",
-        "category": "Frisdrank"
-    },
-    {
-        "name": "Stella",
-        "price": 2.95,
-        "picture": "assets/stella.png",
-        "category": "Bieren"
-    },
-    {
-        "name": "Omer",
-        "price": 2.95,
-        "picture": "assets/omer.png",
-        "category": "Bieren"
-    },
-    {
-        "name": "Duvel",
-        "price": 2.95,
-        "picture": "assets/duvel.png",
-        "category": "Bieren"
-    },
-    {
-        "name": "Lipton Ice-Tea",
-        "price": 1.95,
-        "picture": "assets/ice-tea.webp",
-        "category": "Meer frisdrank"
-    },
-    {
-        "name": "Fanta",
-        "price": 1.95,
-        "picture": "assets/fanta.webp",
-        "category": "Meer frisdrank"
-    }
-    ,
-    {
-        "name": "Fanta",
-        "price": 1.95,
-        "picture": "assets/fanta.webp",
-        "category": "Meer frisdrank"
-    }
-    ,
-    {
-        "name": "Fanta",
-        "price": 1.95,
-        "picture": "assets/fanta.webp",
-        "category": "Meer frisdrank"
-    }
-    ,
-    {
-        "name": "Fanta",
-        "price": 1.95,
-        "picture": "assets/fanta.webp",
-        "category": "Meer frisdrank"
-    }
-    ,
-    {
-        "name": "Fanta",
-        "price": 1.95,
-        "picture": "assets/fanta.webp",
-        "category": "Meer frisdrank"
-    }
-    ,
-    {
-        "name": "Fanta",
-        "price": 1.95,
-        "picture": "assets/fanta.webp",
-        "category": "Meer frisdrank"
-    }
-    ,
-    {
-        "name": "Fanta",
-        "price": 1.95,
-        "picture": "assets/fanta.webp",
-        "category": "Meer frisdrank"
-    }
+  {
+    "name": "Coca-Cola",
+    "price": 1.95,
+    "picture": "assets/coca-cola.jpeg",
+    "category": "Frisdrank"
+  },
+  {
+    "name": "Coca-Cola Zero",
+    "price": 1.95,
+    "picture": "assets/coca-cola-zero.png",
+    "category": "Frisdrank"
+  },
+  {
+    "name": "Lipton Ice-Tea",
+    "price": 2.1,
+    "picture": "assets/ice-tea.jpeg",
+    "category": "Frisdrank"
+  },
+  {
+    "name": "Fanta",
+    "price": 1.95,
+    "picture": "assets/fanta.jpeg",
+    "category": "Frisdrank"
+  },
+  {
+    "name": "Sprite",
+    "price": 1.95,
+    "picture": "assets/sprite.jpeg",
+    "category": "Frisdrank"
+  },
+  {
+    "name": "Schweppes",
+    "price": 2.2,
+    "picture": "assets/schweppes.jpeg",
+    "category": "Frisdrank"
+  },
+  {
+    "name": "Gini",
+    "price": 2.4,
+    "picture": "assets/gini.jpeg",
+    "category": "Frisdrank"
+  },
+  {
+    "name": "Stella",
+    "price": 2.95,
+    "picture": "assets/stella.png",
+    "category": "Bieren"
+  },
+  {
+    "name": "Omer",
+    "price": 3.6,
+    "picture": "assets/omer.png",
+    "category": "Bieren"
+  },
+  {
+    "name": "Duvel",
+    "price": 3.5,
+    "picture": "assets/duvel.png",
+    "category": "Bieren"
+  },
+  {
+    "name": "Tongerlo",
+    "price": 3.6,
+    "picture": "assets/tongerlo.jpeg",
+    "category": "Bieren"
+  },
+  {
+    "name": "Orval",
+    "price": 3.7,
+    "picture": "assets/orval.png",
+    "category": "Bieren"
+  },
+  {
+    "name": "Red-Bull",
+    "price": 3.00,
+    "picture": "assets/red-bull.jpeg",
+    "category": "Energie Dranken"
+  },
+  {
+    "name": "Koffie",
+    "price": 1.95,
+    "picture": "assets/koffie.jpeg",
+    "category": "Koffie"
+  },
+  {
+    "name": "Caipirinha",
+    "description": "Rum, Limoen, Rietsuiker",
+    "price": 8.95,
+    "picture": "assets/caipirinha.jpg",
+    "category": "Cocktails"
+  },
+  {
+    "name": "Gin Mare",
+    "price": 12.95,
+    "picture": "assets/gin-mare.jpeg",
+    "category": "Gin"
+  },
+  {
+    "name": "Cecemel",
+    "price": 2.95,
+    "picture": "assets/cecemel.jpeg",
+    "category": "Warme Dranken"
+  }
 ]
