@@ -90,9 +90,7 @@ class App extends React.Component {
           categories={Object.keys(grouped)}
           setFilter={(filter) => this.setFilter(filter)}
         />
-        <Container
-          className="min-vh-100"
-        >
+        <Container className="min-vh-100">
           {Object.keys(grouped).length === 0 ? <EmptyPage /> : <></>}
           {Object.keys(grouped).map((category) => (
             <section className="mt-3" id={category.toLowerCase()} key={category.toLowerCase()}>
@@ -119,9 +117,9 @@ class App extends React.Component {
             bg="light"
             style={{ height: "6em" }}
           >
-            <Container>
+            <Container className="justify-content-end">
               <Button variant="primary" onClick={() => this.showBasket(true)}>
-                Je bestelling <Badge bg="secondary">{this.state.total}</Badge>
+                bestellen <Badge bg="secondary">{this.state.total}</Badge>
                 <span className="visually-hidden">bestelling</span>
               </Button>
             </Container>

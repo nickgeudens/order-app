@@ -81,7 +81,13 @@
     "name": "Koffie",
     "price": 1.95,
     "picture": "assets/koffie.jpeg",
-    "category": "Koffie"
+    "category": "Warme Dranken"
+  },
+  {
+    "name": "Cecemel",
+    "price": 2.95,
+    "picture": "assets/cecemel.jpeg",
+    "category": "Warme Dranken"
   },
   {
     "name": "Caipirinha",
@@ -91,15 +97,25 @@
     "category": "Cocktails"
   },
   {
+    "name": "Strawberry Daiquiri",
+    "description": "Rum, Limoen, Aardbijen, Suiker Siroop",
+    "price": 8.95,
+    "picture": "assets/strawberry.jpeg",
+    "category": "Cocktails"
+  },
+  {
     "name": "Gin Mare",
+    "description": "Met Fever Tree",
     "price": 12.95,
     "picture": "assets/gin-mare.jpeg",
     "category": "Gin"
   },
   {
-    "name": "Cecemel",
-    "price": 2.95,
-    "picture": "assets/cecemel.jpeg",
-    "category": "Warme Dranken"
+    "name": "Bulldog",
+    "description": "Met Fever Tree",
+    "price": 12.95,
+    "picture": "assets/bulldog.png",
+    "category": "Gin"
   }
+  
 ]

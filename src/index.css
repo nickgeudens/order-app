@@ -18,14 +18,21 @@ code {
 body::-webkit-scrollbar{
   display: none;
 }
+
 .badge-hover{
   transition: 150ms;
+  user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  
 }
 .badge-hover:hover {
-  cursor: pointer;
-  filter: brightness(95%);
+    cursor: pointer;
+    filter: brightness(95%);
 }
+
 .badge-hover:active {
-  cursor: pointer;
-  filter: brightness(85%);
+    cursor: pointer;
+    filter: brightness(85%);
 }

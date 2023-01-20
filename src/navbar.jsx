@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navbar, Badge, Container, Form } from "react-bootstrap";
 import { FaSearch } from 'react-icons/fa';
 import { CgClose } from 'react-icons/cg';
-import { Link } from "react-scroll";
+import { Link, scrollSpy, animateScroll as scroll } from "react-scroll";
 import 'swiper/css';
+import 'swiper/css/navigation';
 
 export default function CategoryNavbar(props) {
   const [selected, setSelected] = useState(props.categories[0]);
@@ -19,6 +20,7 @@ export default function CategoryNavbar(props) {
   }
 
   const toggleFilter = () => {
+    
     if (searching) {
       props.setFilter("")
     }
@@ -36,9 +38,11 @@ export default function CategoryNavbar(props) {
               placeholder="Zoeken"
               className="w-100 mx-1 me-2 p-1 my-2"
               onChange={event => props.setFilter(event.target.value)}
+              onKeyDown={scroll.scrollToTop}
               onPointerCancel={toggleFilter}
             /> : <></>}
           <Swiper className={searching ? "d-none" : ""}
+            //navigation
             slidesPerView="auto"
             direction="horizontal"
             onSwiper={setSwiper}
@@ -51,15 +55,15 @@ export default function CategoryNavbar(props) {
                     <Link key={category.toLowerCase()}
                       spy
                       hashSpy
-                      duration={1}
+                      duration={300}
                       to={category.toLowerCase()}
-                      offset={-54}
-                      spyThrottle={500}
+                      offset={-62}
+                      spyThrottle={300}
                       onSetActive={() => changeSelected(category)}
                     >
                       <Badge pill className="p-2 badge-hover"
                         bg={category === selected ? "primary" : "secondary"}
-                        onClick={() => changeSelected(category)}
+                        //onClick={() => changeSelected(category)}
                       >
                         {category}
                       </Badge>
