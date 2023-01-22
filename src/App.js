@@ -2,11 +2,12 @@ import React from "react";
 import "./App.css";
 
 import menu from "./menu.json";
-import { Button, Badge, Container, Row, Col, Navbar, Modal } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
 import Item from "./item";
 import CategoryNavbar from "./navbar";
 import EmptyPage from "./empty";
 import Footer from "./footer";
+import Basket from "./basket";
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,6 @@ class App extends React.Component {
     this.state = {
       menu_items: initialMenuItems,
       total: 0,
-      showBasket: false,
       filter: "",
     };
   }
@@ -40,7 +40,7 @@ class App extends React.Component {
     }, {});
   }
 
-  incrementItem(item) {
+  incrementItem = (item) => {
     const items = this.state.menu_items.slice();
     let i = items.indexOf(item);
     items[i].amount++;
@@ -50,7 +50,7 @@ class App extends React.Component {
     });
   }
 
-  decrementItem(item) {
+  decrementItem = (item) => {
     const items = this.state.menu_items.slice();
     let i = items.indexOf(item);
     if (items[i].amount > 0) {
@@ -60,12 +60,6 @@ class App extends React.Component {
         total: this.state.total - 1,
       });
     }
-  }
-
-  showBasket(visible) {
-    this.setState({
-      showBasket: visible,
-    });
   }
 
   setFilter(filter) {
@@ -101,16 +95,18 @@ class App extends React.Component {
               {/* <Image thumbnail style={{height: "6em", width:"100vw", overflow:"hidden"}}
               src='https://d2j6dbq0eux0bg.cloudfront.net/images/29466296/1759355392.jpg'/> */}
               <Row>
-                <Col sm={12}><h2>{category}</h2></Col>
-                
-                  {grouped[category].map((item) => (
-                    <Item
-                      key={item.id}
-                      item={item}
-                      increment={() => this.incrementItem(item)}
-                      decrement={() => this.decrementItem(item)}
-                    />
-                  ))}
+                <Col sm={12}>
+                  <h2>{category}</h2>
+                </Col>
+
+                {grouped[category].map((item) => (
+                  <Item
+                    key={item.id}
+                    item={item}
+                    increment={() => this.incrementItem(item)}
+                    decrement={() => this.decrementItem(item)}
+                  />
+                ))}
               </Row>
             </section>
           ))}
@@ -123,51 +119,14 @@ class App extends React.Component {
             style={{ height: "6em" }}
           >
             <Container className="justify-content-end">
-              <Button variant="primary" onClick={() => this.showBasket(true)}>
-                bestellen <Badge bg="secondary">{this.state.total}</Badge>
-                <span className="visually-hidden">bestelling</span>
-              </Button>
+              <Basket
+                items={this.state.menu_items}
+                increment={this.incrementItem}
+                decrement={this.decrementItem}
+              />
             </Container>
           </Navbar>
-        ) : (
-          <></>
-        )}
-
-        <Modal
-          show={this.state.showBasket}
-          onHide={() => this.showBasket(false)}
-          fullscreen={true}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Je bestelling</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {this.state.menu_items.map((item) =>
-              item.amount > 0 ? (
-                <div key={item.id}>
-                  <h5>
-                    {item.name} <Badge bg="primary">{item.amount}</Badge>
-                  </h5>
-                  <h6>€{(item.price * item.amount).toFixed(2)}</h6>
-                </div>
-              ) : (
-                <></>
-              )
-            )}
-          </Modal.Body>
-          <Modal.Footer>
-            <h4>
-              €
-              {this.state.menu_items
-                .map((item) => item.amount * item.price)
-                .reduce((partialSum, a) => partialSum + a, 0)
-                .toFixed(2)}
-            </h4>
-            <Button variant="primary" onClick={() => this.showBasket(false)}>
-              Bestel
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        ) : ""}
         <Footer />
       </>
     );

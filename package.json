@@ -5,10 +5,10 @@
   "dependencies": {
     "bootstrap": "^5.2.2",
     "bootswatch": "^5.2.2",
+    "fast-average-color": "^9.3.0",
     "g": "^2.0.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
-    "react-d3-library": "^1.0.4",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-scripts": "^5.0.1",

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navbar, Badge, Container, Form } from "react-bootstrap";
 import { FaSearch } from 'react-icons/fa';
 import { CgClose } from 'react-icons/cg';
-import { Link, scrollSpy, animateScroll as scroll } from "react-scroll";
+import { Link, animateScroll as scroll } from "react-scroll";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
