@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col, Image, Card, Badge } from 'react-bootstrap';
 import { FaPlus } from 'react-icons/fa';
+//import { FastAverageColor } from 'fast-average-color';
 
 export default function Item(props) {
-  const [colors, setColors] = useState(false);
+  // const [color, setColor] = useState("");
+  // new FastAverageColor().getColorAsync(props.item.picture)
+  //   .then(color => setColor(color.rgba.slice(0, -2)+"0.2)"))
+  //   .catch(e => {
+  //       console.log(e);
+  //   });
+
   return (
     <Col sm={12} md={4} key={props.item.index} className="pb-2">
-      <div className='w-100 menu-item-container'>
-        <Card className='badge-hover menu-card' onClick={props.increment} style={{ backgroundColor: colors[0] }}>
+        <Card 
+          className={
+            "badge-hover " + (props.item.amount > 0 ? "in-basket ":"") + (props.item.unavailable? "unavailable ":"")
+          } 
+          onClick={props.increment}>
           <div className='d-flex justify-content-between'>
             <div className='d-flex align-items-start'>
-              <ColorExtractor
-                onError={error => console.log(error)}
-                getColors={colors => { setColors(colors); console.log(colors) }}
-                maxColors={1}
-              ><img src={props.item.picture}></img></ColorExtractor>
+              
                 <Image className={"m-2"}
                   style={{
                     maxWidth: "4em",
@@ -35,13 +41,12 @@ export default function Item(props) {
             </div>
             <div className='mx-3 my-2'>
               {props.item.amount > 0 ?
-                <Badge pill bg="primary">{props.item.amount}</Badge> :
+                <Badge pill bg="dark">{props.item.amount}</Badge> :
                 <FaPlus style={{ filter: "opacity(20%)" }} />
               }
             </div>
           </div>
         </Card>
-      </div>
     </Col>
   );
 }

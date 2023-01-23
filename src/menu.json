@@ -39,7 +39,8 @@
     "name": "Gini",
     "price": 2.4,
     "picture": "assets/gini.jpeg",
-    "category": "Frisdrank"
+    "category": "Frisdrank",
+    "unavailable": true
   },
   {
     "name": "Stella",

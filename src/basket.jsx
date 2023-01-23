@@ -30,7 +30,7 @@ export default function Basket(props) {
         <Modal.Body>
           {props.items.map((item) =>
             item.amount > 0 ? (
-              <div key={item.id} className="d-flex justify-content-between pb-2">
+              <div key={item.id} className="d-flex justify-content-between align-items-start pb-2">
                 <div>
                   <h5>
                     {item.name} <Badge bg="primary">{item.amount}</Badge>

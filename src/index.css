@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  user-select: none;
 }
 
 code {
@@ -28,9 +29,18 @@ body::-webkit-scrollbar{
 @media (hover: hover) and (pointer: fine) {
   
 }
-.badge-hover:hover {
+.badge-hover:not(.unavailable):hover {
     filter: brightness(95%);
 }
-.badge-hover:active {
+.badge-hover:not(.unavailable):active {
     filter: brightness(85%);
+}
+
+.in-basket {
+  background-color:  color-mix(in srgb, var(--bs-card-bg) 30%, black);
+}
+
+.unavailable {
+  filter: saturate(0.1) brightness(90%);
+  cursor: auto !important;
 }
