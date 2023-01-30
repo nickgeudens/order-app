@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@google-pay/button-react": "^3.0.5",
     "@mollie/api-client": "^3.6.0",
     "bootstrap": "^5.2.2",
     "bootswatch": "^5.2.2",

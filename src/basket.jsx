@@ -35,16 +35,17 @@ export default function Basket(props) {
               <>
                 <div key={item.id} className="d-flex justify-content-between align-items-center pb-2">
                   <div className='d-flex align-items-center'>
-                    <div>
-                      <h5>
-                        {item.name} <Badge pill bg="primary" className='mx-1'>
+                    <Badge pill bg="primary" className='mx-3'>
                           {item.amount}
                         </Badge>
+                    <div>
+                      <h5>
+                         {item.name}
                       </h5>
                       <h6>€{(item.price * item.amount).toFixed(2)}</h6>
                     </div>
                   </div>
-                  <div>
+                  <div className='d-flex align-items-center'>
                     <Badge
                       pill bg="light"
                       onClick={() => props.decrement(item)}
@@ -68,49 +69,9 @@ export default function Basket(props) {
           <h4>
             €{totalPrice}
           </h4>
-          {/* <Checkout
-            amount={10}
-          />
           <Button variant="primary" onClick={() => setShow(false)}>
             Bestel
-          </Button> */}
-          <GooglePayButton
-            environment="TEST"
-            paymentRequest={{
-              apiVersion: 2,
-              apiVersionMinor: 0,
-              allowedPaymentMethods: [
-                {
-                  type: 'CARD',
-                  parameters: {
-                    allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-                    allowedCardNetworks: ['MASTERCARD', 'VISA'],
-                  },
-                  tokenizationSpecification: {
-                    type: 'PAYMENT_GATEWAY',
-                    parameters: {
-                      gateway: 'example',
-                      gatewayMerchantId: 'exampleGatewayMerchantId',
-                    },
-                  },
-                },
-              ],
-              merchantInfo: {
-                merchantId: '12345678901234567890',
-                merchantName: 'Demo Merchant',
-              },
-              transactionInfo: {
-                totalPriceStatus: 'FINAL',
-                totalPriceLabel: 'Total',
-                totalPrice: '100.00',
-                currencyCode: 'USD',
-                countryCode: 'US',
-              },
-            }}
-            onLoadPaymentData={paymentRequest => {
-              console.log('load payment data', paymentRequest);
-            }}
-          />
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

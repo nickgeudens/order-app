@@ -9,43 +9,55 @@ export default function Item(props) {
       <Card className={props.item.amount > 0 ? "in-basket" : ""} >
         <div className='d-flex'>
           <div
-            style={{ backgroundColor: "var(--bs-card-bg)", borderRadius: "var(--bs-card-border-radius)"}}
+            style={{ backgroundColor: "var(--bs-card-bg)", borderRadius: "var(--bs-card-border-radius)" }}
             className={
               "badge-hover d-flex justify-content-between w-100 " + (props.item.unavailable ? "unavailable " : "")
             }
-            onClick={props.item.unavailable?"":props.increment}
+            onClick={props.item.unavailable ? "" : props.increment}
           >
             <div className='d-flex align-items-center'>
-              <Image className={"m-3"}
-                style={{
-                  maxWidth: "3em",
-                  maxHeight: "3em",
+              <div className={"m-3"} style={{ position: "relative" }}>
+                <div >
+                  <Image style={{
+                  maxWidth: "3rem",
+                  maxHeight: "3rem",
                   width: "auto",
                   height: "auto"
                 }}
-                fluid
-                rounded
-                src={props.item.picture}
-              />
+                    fluid
+                    rounded
+                    src={props.item.picture}
+                  />
+                </div>
+                <div style={{
+                  position: "absolute",
+                  overflow: "auto",
+                  top:"-0.5rem",
+                  right:"-0.5rem"
+                  }}>
+                  {props.item.amount > 0 ?
+                  <Badge pill bg="primary" ><big>{props.item.amount}</big></Badge>:""}
+                </div>
+              </div>
+
+
 
               <div className='d-flex flex-column m-2 mr-auto'>
-                <p className='m-0 fw-bold'>{props.item.name}</p> 
+                <p className='m-0 fw-bold'>{props.item.name}</p>
                 <p className='m-0 text-muted'><small>{props.item.description}</small></p>
                 <p className='m-0'><small>€{props.item.price.toFixed(2)}</small></p>
               </div>
             </div>
             <div className='d-flex mx-3 my-2 align-items-center'>
-              {props.item.amount > 0 ?
-                <Badge pill bg="dark" ><big>{props.item.amount}</big></Badge> :
-                props.item.unavailable?<Badge bg="danger" pill >uitverkocht</Badge>:<FaPlus style={{ filter: "opacity(20%)" }} />
-              }
+                { props.item.unavailable ? <Badge bg="danger" pill >uitverkocht</Badge> : <FaPlus style={{ filter: "opacity(20%)" }} />}
+              
 
             </div>
           </div>
           <Button hidden={!props.item.amount > 0}
-            variant="danger" 
+            variant="danger"
             className='px-3 reset-button-gone'
-            style={{borderRadius: "0px var(--bs-card-border-radius) var(--bs-card-border-radius) 0px"}}
+            style={{ borderRadius: "0px var(--bs-card-border-radius) var(--bs-card-border-radius) 0px" }}
             onClick={props.decrement}
           ><FaMinus /></Button>
         </div>
