@@ -76,7 +76,8 @@
     "name": "Red-Bull",
     "price": 3.00,
     "picture": "assets/red-bull.jpeg",
-    "category": "Energie Dranken"
+    "category": "Energie Dranken",
+    "unavailable":true
   },
   {
     "name": "Koffie",

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navbar, Badge, Container, Form } from "react-bootstrap";
 import { FaSearch } from 'react-icons/fa';
 import { CgClose } from 'react-icons/cg';
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -20,7 +20,6 @@ export default function CategoryNavbar(props) {
   }
 
   const toggleFilter = () => {
-    
     if (searching) {
       props.setFilter("")
     }
@@ -28,18 +27,21 @@ export default function CategoryNavbar(props) {
 
   }
 
+  const onSearch = event => {
+    window.scrollTo(0, 90)
+    props.setFilter(event.target.value)
+  }
+
   return (
-      <Navbar bg="light" variant="light" sticky="top" className='py-0' style={{ height: "4em" }}>
+      <Navbar bg="light" variant="light" sticky="top" className='py-0' style={{ height: "4rem" }}>
         <Container>
           {searching ?
             <Form.Control
               autoFocus
               style={{ borderRadius: "var(--bs-border-radius-pill)" }}
               placeholder="Zoeken"
-              className="w-100 mx-1 me-2 p-1 my-2"
-              onChange={event => props.setFilter(event.target.value)}
-              onKeyDown={scroll.scrollToTop}
-              onPointerCancel={toggleFilter}
+              className="w-100 mx-1 me-2 p-1 my-2 px-3"
+              onChange={onSearch}
             /> : <></>}
           <Swiper className={searching ? "d-none" : ""}
             //navigation
@@ -57,11 +59,11 @@ export default function CategoryNavbar(props) {
                       hashSpy
                       duration={300}
                       to={category.toLowerCase()}
-                      offset={-62}
+                      offset={-76}
                       spyThrottle={300}
                       onSetActive={() => changeSelected(category)}
                     >
-                      <Badge pill className="p-2 badge-hover"
+                      <Badge pill className="badge-hover nav-batch"
                         bg={category === selected ? "primary" : "secondary"}
                         //onClick={() => changeSelected(category)}
                       >
@@ -74,7 +76,7 @@ export default function CategoryNavbar(props) {
             </ul>
           </Swiper>
           <Badge pill bg={searching ? "primary" : "light"}
-            className="p-2 badge-hover mx-2"
+            className="nav-batch badge-hover mx-2"
             onClick={toggleFilter}
             style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
           >

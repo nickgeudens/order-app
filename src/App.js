@@ -27,7 +27,8 @@ class App extends React.Component {
     const items = this.state.menu_items
       .slice()
       .filter((item) =>
-        item.name.toLowerCase().includes(this.state.filter.toLowerCase())
+        item.name.toLowerCase().includes(this.state.filter.toLowerCase()) || 
+        item.category.toLowerCase().includes(this.state.filter.toLowerCase())
       );
 
     return items.reduce((group, item, index) => {
@@ -61,6 +62,18 @@ class App extends React.Component {
       });
     }
   }
+  resetItem = (item) => {
+    const items = this.state.menu_items.slice();
+    let i = items.indexOf(item);
+    if (items[i].amount > 0) {
+      let previous = items[i].amount
+      items[i].amount = 0;
+      this.setState({
+        menu_items: items,
+        total: this.state.total - previous,
+      });
+    }
+  }
 
   setFilter(filter) {
     this.setState({
@@ -84,7 +97,7 @@ class App extends React.Component {
           categories={Object.keys(grouped)}
           setFilter={(filter) => this.setFilter(filter)}
         />
-        <Container className="min-vh-100">
+        <Container className="min-vh-100" id="main">
           {Object.keys(grouped).length === 0 ? <EmptyPage /> : <></>}
           {Object.keys(grouped).map((category) => (
             <section
@@ -105,6 +118,7 @@ class App extends React.Component {
                     item={item}
                     increment={() => this.incrementItem(item)}
                     decrement={() => this.decrementItem(item)}
+                    reset={() => this.resetItem(item)}
                   />
                 ))}
               </Row>
