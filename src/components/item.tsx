@@ -22,15 +22,13 @@ export interface ItemProps {
 export default function Item(props: ItemProps) {
   const { item, increment, decrement } = props;
   return (
-    <div className="relative w-full mb-2">
-      <div className={`relative flex items-center border rounded-md ${
+      <div className={`flex items-center border rounded-md ${
         item.unavailable ? 'saturate-0 brightness-90 pointer-events-none' : ''
       }`}>
-        {/* Set a fixed height for the flex row */}
-        <div className="flex flex-1 items-center h-[4.5rem]">
+        <div className="flex flex-1 h-full">
           <Button
             variant="ghost"
-            className={`flex items-center flex-1 p-2 pr-6 text-left justify-start h-full rounded-md ${item.amount > 0 ? 'rounded-r-none' : ''} ${!item.unavailable ? 'hover:bg-gray-50 active:bg-gray-100' : ''}`}
+            className={`flex items-center flex-1 p-0 pr-6 text-left justify-start h-full rounded-md ${item.amount > 0 ? 'rounded-r-none' : ''} ${!item.unavailable ? 'hover:bg-gray-50 active:bg-gray-100' : ''}`}
             onClick={() => increment(item)}
             disabled={item.unavailable}
           >
@@ -52,26 +50,27 @@ export default function Item(props: ItemProps) {
               <p className="m-0 text-sm">€{item.price.toFixed(2)}</p>
             </div>
             <span
-              className={`transition-all duration-200 ${item.amount > 0 ? 'mr-6' : ''}`}
+              className={`transition-all duration-200`}
             >
               <Plus className={item.unavailable ? 'opacity-20' : ''} />
             </span>
           </Button>
-          {/* Minus button next to plus button if amount > 0 */}
-          {item.amount > 0 && (
-            <Button
-              variant="destructive"
-              className="h-full rounded-l-none rounded-r-md flex items-center p-0"
-              onClick={(e) => {
-                e.stopPropagation();
-                decrement(item);
-              }}
-            >
+          {/* Minus button */}
+          <Button
+            variant="destructive"
+            className={`transition-all duration-200 h-full rounded-l-none rounded-r-md flex items-center justify-center p-0 ${
+              item.amount > 0 ? 'w-10' : 'w-0'
+            }`}
+            onClick={(e) => {
+              e.stopPropagation();
+              decrement(item);
+            }}
+          >
+            <span className="flex justify-center items-center">
               <Minus />
-            </Button>
-          )}
+            </span>
+          </Button>
         </div>
       </div>
-    </div>
   );
 }
