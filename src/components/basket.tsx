@@ -4,8 +4,25 @@ import { Button } from '@/components/ui/button';
 import { Plus, Minus } from 'lucide-react';
 import Checkout from './checkout';
 
-export default function Basket(props) {
-  const [show, setShow] = useState(false);
+export interface BasketItem {
+  id?: number;
+  name: string;
+  description: string;
+  price: number;
+  picture: string;
+  category: string;
+  amount: number;
+  unavailable?: boolean;
+}
+
+export interface BasketProps {
+  items: BasketItem[];
+  increment: (item: BasketItem) => void;
+  decrement: (item: BasketItem) => void;
+}
+
+export default function Basket(props: BasketProps): JSX.Element {
+  const [show, setShow] = useState<boolean>(false);
 
   const total = props.items
     .map((item) => item.amount)
@@ -48,14 +65,14 @@ export default function Basket(props) {
                   <div className="flex items-center gap-2">
                     <button
                       type="button"
-                      onClick={() => props.decrement(item)}
+                      onClick={(): void => props.decrement(item)}
                       className="bg-zinc-100 text-zinc-800 rounded-full px-2 py-1 hover:bg-zinc-200 transition"
                     >
                       <Minus />
                     </button>
                     <button
                       type="button"
-                      onClick={() => props.increment(item)}
+                      onClick={(): void => props.increment(item)}
                       className="bg-zinc-800 text-white rounded-full px-2 py-1 hover:bg-zinc-700 transition"
                     >
                       <Plus />
@@ -69,7 +86,7 @@ export default function Basket(props) {
         </div>
         <DialogFooter>
           <h4 className="font-bold text-lg mr-auto">€{totalPrice}</h4>
-          <Button variant="primary" type="button" onClick={() => setShow(false)}>
+          <Button variant="default" type="button" onClick={(): void => setShow(false)}>
             Bestel
           </Button>
         </DialogFooter>

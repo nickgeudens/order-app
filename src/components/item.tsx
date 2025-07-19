@@ -1,16 +1,6 @@
-import { Plus, Trash, Minus } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import { Button } from './ui/button';
-
-export interface MenuItem {
-  id?: number;
-  name: string;
-  description: string;
-  price: number;
-  picture: string;
-  category: string;
-  amount: number;
-  unavailable?: boolean;
-}
+import type { MenuItem } from '../types';
 
 export interface ItemProps {
   item: MenuItem;

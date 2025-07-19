@@ -84,11 +84,11 @@ export default function CategoryNavbar(props: CategoryNavbarProps) {
         </Swiper>
         <Button
           variant={searching ? "default" : "outline"}
-          className={`ml-2 rounded-full p-2`}
+          className={`ml-2 rounded-full aspect-square flex items-center justify-center p-2`}
           onClick={toggleFilter}
           data-slot="search-toggle"
         >
-          {searching ? <X size={18} /> : <Search size={18} />}
+          {searching ? <X size={16} /> : <Search size={16} />}
         </Button>
       </div>
     </nav>
