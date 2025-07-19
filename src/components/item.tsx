@@ -40,9 +40,9 @@ export default function Item(props: ItemProps) {
               <p className="m-0 text-sm leading-loose">€{item.price.toFixed(2)}</p>
             </div>
             <span
-              className={`transition-all duration-200 flex-shrink-0`}
+              className={`flex-shrink-0`}
             >
-              <Plus className={item.unavailable ? 'opacity-20' : ''} />
+              <Plus className={'opacity-30'} />
             </span>
           </Button>
           {/* Minus button */}

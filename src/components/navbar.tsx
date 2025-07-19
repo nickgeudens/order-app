@@ -64,13 +64,14 @@ export default function CategoryNavbar(props: CategoryNavbarProps) {
                     spy
                     hashSpy
                     duration={300}
+                    smooth={true}
                     to={category.toLowerCase()}
                     offset={-76}
                     spyThrottle={300}
                     onSetActive={() => changeSelected(category)}
                   >
                     <Button
-                      variant={selected === category ? "secondary" : "ghost"}
+                      variant={selected === category ? "default" : "ghost"}
                       className={`px-4 py-2 rounded-full`}
                       data-slot="category-badge"
                     >
