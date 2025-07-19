@@ -22,17 +22,17 @@ export interface ItemProps {
 export default function Item(props: ItemProps) {
   const { item, increment, decrement } = props;
   return (
-      <div className={`flex items-center border rounded-md ${
+      <div className={`flex items-center border rounded-md overflow-hidden ${
         item.unavailable ? 'saturate-0 brightness-90 pointer-events-none' : ''
       }`}>
-        <div className="flex flex-1 h-full">
+        <div className="flex flex-1 h-full min-w-0">
           <Button
             variant="ghost"
-            className={`flex items-center flex-1 p-0 pr-6 text-left justify-start h-full rounded-md ${item.amount > 0 ? 'rounded-r-none' : ''} ${!item.unavailable ? 'hover:bg-gray-50 active:bg-gray-100' : ''}`}
+            className={`flex items-center flex-1 p-0 pr-6 text-left justify-start h-full rounded-md min-w-0 ${item.amount > 0 ? 'rounded-r-none' : ''} ${!item.unavailable ? 'hover:bg-gray-50 active:bg-gray-100' : ''}`}
             onClick={() => increment(item)}
             disabled={item.unavailable}
           >
-            <div className="flex m-3 h-[3rem] w-[3rem] relative align-middle">
+            <div className="flex m-3 h-[3rem] w-[3rem] relative align-middle flex-shrink-0">
               <img
                 className="max-w-[3rem] max-h-[3rem] rounded object-contain"
                 src={item.picture}
@@ -44,13 +44,13 @@ export default function Item(props: ItemProps) {
                 </span>
               ) : null}
             </div>
-            <div className="flex flex-col m-2 flex-1">
-              <p className="m-0 font-bold">{item.name}</p>
-              <p className="m-0 text-gray-500 text-sm">{item.description}</p>
+            <div className="flex flex-col m-2 flex-1 min-w-0">
+              <p className="m-0 font-bold whitespace-normal">{item.name}</p>
+              <p className="m-0 text-gray-500 text-sm whitespace-normal">{item.description}</p>
               <p className="m-0 text-sm">€{item.price.toFixed(2)}</p>
             </div>
             <span
-              className={`transition-all duration-200`}
+              className={`transition-all duration-200 flex-shrink-0`}
             >
               <Plus className={item.unavailable ? 'opacity-20' : ''} />
             </span>
