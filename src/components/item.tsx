@@ -45,9 +45,9 @@ export default function Item(props: ItemProps) {
               ) : null}
             </div>
             <div className="flex flex-col m-2 flex-1 min-w-0">
-              <p className="m-0 font-bold whitespace-normal">{item.name}</p>
-              <p className="m-0 text-gray-500 text-sm whitespace-normal">{item.description}</p>
-              <p className="m-0 text-sm">€{item.price.toFixed(2)}</p>
+              <p className="m-0 font-bold whitespace-normal leading-tight">{item.name}</p>
+              <p className="m-0 text-gray-500 text-sm whitespace-normal leading-tight">{item.description}</p>
+              <p className="m-0 text-sm leading-loose">€{item.price.toFixed(2)}</p>
             </div>
             <span
               className={`transition-all duration-200 flex-shrink-0`}
