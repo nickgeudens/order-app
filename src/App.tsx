@@ -1,11 +1,11 @@
 import React from "react";
 
 import menu from "./menu.json";
-import Item from "./item";
-import CategoryNavbar from "./navbar";
-import EmptyPage from "./empty";
-import Footer from "./footer";
-import Basket from "./basket";
+import Item from "./components/item";
+import CategoryNavbar from "./components/navbar";
+import EmptyPage from "./components/empty";
+import Footer from "./components/footer";
+import Basket from "./components/basket";
 
 class App extends React.Component {
   constructor(props) {

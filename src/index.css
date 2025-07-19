@@ -1,82 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  user-select: none;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-body::-webkit-scrollbar{
-  display: none;
-}
-
-.badge-hover{
-  transition: 150ms;
-  user-select: none;
-  cursor: pointer;
-}
-
-.nav-batch{
-  padding:0.75rem !important;
-}
-
-@media (hover: hover) and (pointer: fine) {
-
-}
-.badge-hover:not(.unavailable):hover {
-    filter: brightness(95%);
-}
-.badge-hover:not(.unavailable):active {
-    filter: brightness(85%);
-}
-
-.in-basket {
-
-}
-
-.unavailable {
-  filter: saturate(0) brightness(90%);
-  cursor: auto !important;
-}
-
-.reset-button-gone{
-  transition: 150ms;
-  transform: scaleX(0.1) translate(0, 10);
-}
-
-.card{
-  border: 0 !important;
-  --bs-card-bg: rgb(245, 245, 245) !important;
-}
-
-.menu-item-container {
-  position: relative; 
-}
-.menu-card {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.minus{
-  position: absolute !important;
-  bottom: 0;
-  right: 0;
-  overflow: auto;
-}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -183,6 +108,22 @@ body::-webkit-scrollbar{
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+@custom-variant dark (&:is(.dark *));
+body {
+  margin: 0;
+  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+body::-webkit-scrollbar{
+  display: none;
 }
 
 @layer base {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { FaPlus, FaMinus } from 'react-icons/fa';
+import { Plus, Minus } from 'lucide-react';
 import Checkout from './checkout';
 
 export default function Basket(props) {
@@ -19,9 +19,9 @@ export default function Basket(props) {
   return (
     <Dialog open={show} onOpenChange={setShow}>
       <DialogTrigger asChild>
-        <Button variant="primary" className="flex items-center gap-2">
+        <Button className="flex items-center gap-2">
           Je bestelling
-          <span className="bg-secondary text-white rounded-full px-2 py-1 text-xs font-bold mx-2">
+          <span className="bg-secondary text-secondary-foreground rounded-full px-2 py-1 text-xs font-bold mx-2">
             {total}
           </span>
           <span className="sr-only">bestelling</span>
@@ -51,14 +51,14 @@ export default function Basket(props) {
                       onClick={() => props.decrement(item)}
                       className="bg-zinc-100 text-zinc-800 rounded-full px-2 py-1 hover:bg-zinc-200 transition"
                     >
-                      <FaMinus />
+                      <Minus />
                     </button>
                     <button
                       type="button"
                       onClick={() => props.increment(item)}
                       className="bg-zinc-800 text-white rounded-full px-2 py-1 hover:bg-zinc-700 transition"
                     >
-                      <FaPlus />
+                      <Plus />
                     </button>
                   </div>
                 </div>

@@ -5,13 +5,19 @@ import { Link } from "react-scroll";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Button } from '@/components/ui/button';
+import { Input } from "./ui/input";
 
-export default function CategoryNavbar(props) {
-  const [selected, setSelected] = useState(props.categories[0]);
-  const [swiper, setSwiper] = useState(null);
-  const [searching, setSearching] = useState(false);
+interface CategoryNavbarProps {
+  categories: string[];
+  setFilter: (filter: string) => void;
+}
 
-  const changeSelected = (category) => {
+export default function CategoryNavbar(props: CategoryNavbarProps) {
+  const [selected, setSelected] = useState<string>(props.categories[0]);
+  const [swiper, setSwiper] = useState<any>(null);
+  const [searching, setSearching] = useState<boolean>(false);
+
+  const changeSelected = (category: string) => {
     setSelected(category)
     if (swiper) {
       swiper.slideTo(props.categories.indexOf(category))
@@ -25,20 +31,20 @@ export default function CategoryNavbar(props) {
     setSearching(!searching)
   }
 
-  const onSearch = event => {
+  const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     window.scrollTo(0, 90)
     props.setFilter(event.target.value)
   }
 
   return (
-    <nav className="sticky top-0 bg-white dark:bg-zinc-900 shadow-sm py-0 h-16 z-10">
+    <nav className="sticky top-0 bg-background border-b-1 border-t-1 py-0 h-16 z-10">
       <div className="container mx-auto flex items-center h-full px-2">
         {searching ? (
-          <input
+          <Input
             autoFocus
             type="text"
             placeholder="Zoeken"
-            className="w-full rounded-full border border-zinc-200 dark:border-zinc-700 px-4 py-2 mx-1 me-2 my-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full rounded-full  px-4 py-2 mx-1 me-2 my-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
             onChange={onSearch}
           />
         ) : null}
@@ -63,12 +69,13 @@ export default function CategoryNavbar(props) {
                     spyThrottle={300}
                     onSetActive={() => changeSelected(category)}
                   >
-                    <span
-                      className={`px-4 py-2 rounded-full cursor-pointer transition-colors ${selected === category ? 'bg-primary text-white' : 'bg-secondary text-zinc-800 dark:bg-zinc-700 dark:text-white hover:bg-primary/80 hover:text-white'}`}
+                    <Button
+                      variant={selected === category ? "secondary" : "ghost"}
+                      className={`px-4 py-2 rounded-full`}
                       data-slot="category-badge"
                     >
                       {category}
-                    </span>
+                    </Button>
                   </Link>
                 </li>
               </SwiperSlide>
@@ -76,8 +83,8 @@ export default function CategoryNavbar(props) {
           </ul>
         </Swiper>
         <Button
-          variant={searching ? "primary" : "secondary"}
-          className={`ml-2 rounded-full border border-zinc-200 dark:border-zinc-700 p-2 transition-colors ${searching ? 'bg-primary text-white' : 'bg-zinc-100 dark:bg-zinc-800'}`}
+          variant={searching ? "default" : "outline"}
+          className={`ml-2 rounded-full p-2`}
           onClick={toggleFilter}
           data-slot="search-toggle"
         >
