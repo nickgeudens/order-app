@@ -7,8 +7,12 @@ import { useMenu } from "./features/menu/service/menuService";
 function App() {
   const {
     total,
-    setFilter,
     categorizedItems,
+    setFilter,
+    incrementItem,
+    decrementItem,
+    resetItem,
+    filter,
   } = useMenu();
 
 
@@ -23,20 +27,18 @@ function App() {
         <h1 className="mt-3 text-3xl font-bold uppercase">Cafeke</h1>
         <p className="text-lg text-gray-600">Cafeke</p>
       </div>
-
-      <MenuNav categories={Object.keys(categorizedItems)} setFilter={setFilter} />
+      <MenuNav
+        categories={Object.keys(categorizedItems)}
+        setFilter={setFilter}
+        filter={filter}
+      />
       <main className="container mx-auto min-h-screen px-4" id="main">
-        {Object.keys(categorizedItems).length === 0 && (
-          <div className="flex flex-col justify-center items-center my-20 w-full">
-            <h2 className="text-muted text-2xl mb-4">Geen resultaten</h2>
-            <img
-              src="assets/dorst.png"
-              className="w-1/2 max-w-md"
-              alt="Geen resultaten"
-            />
-          </div>
-        )}
-        <MenuGrid/>
+        <MenuGrid
+          categorizedItems={categorizedItems}
+          incrementItem={incrementItem}
+          decrementItem={decrementItem}
+          resetItem={resetItem}
+        />
       </main>
       {total > 0 && (
         <nav className="fixed bottom-0 left-0 w-full bg-white shadow-lg h-24 flex items-center z-50">

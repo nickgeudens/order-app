@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Plus, Minus } from 'lucide-react';
@@ -8,16 +8,24 @@ import { useMenu } from "@/features/menu/service/menuService";
 export default function OrderDialog() {
   const [show, setShow] = useState<boolean>(false);
   const { menuItems, incrementItem, decrementItem } = useMenu();
+  const [items, setItems] = useState(menuItems);
+  const [total, setTotal] = useState("0");
+  const [totalPrice, setTotalPrice] = useState("0.00");
 
-  const items = menuItems;
-  const total = items
-    .map((item) => item.amount)
-    .reduce((partialSum, a) => partialSum + a, 0)
-    .toFixed(0);
-  const totalPrice = items
-    .map((item) => item.amount * item.price)
-    .reduce((partialSum, a) => partialSum + a, 0)
-    .toFixed(2);
+  useEffect(() => {
+    console.log("Menu items updated:", menuItems);
+    setItems(menuItems);
+    const newTotal = menuItems
+      .map((item) => item.amount)
+      .reduce((partialSum, a) => partialSum + a, 0)
+      .toFixed(0);
+    setTotal(newTotal);
+    const newTotalPrice = menuItems
+      .map((item) => item.amount * item.price)
+      .reduce((partialSum, a) => partialSum + a, 0)
+      .toFixed(2);
+    setTotalPrice(newTotalPrice);
+  }, [menuItems]);
 
   return (
     <Dialog open={show} onOpenChange={setShow}>

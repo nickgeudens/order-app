@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import menu from "./menu.json";
 import type { MenuItem } from "@/types";
 

@@ -7,20 +7,21 @@ import 'swiper/css/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from "../../../components/ui/input";
 
-interface CategoryNavbarProps {
+interface MenuNavProps {
   categories: string[];
   setFilter: (filter: string) => void;
+  filter: string;
 }
 
-export default function MenuNav(props: CategoryNavbarProps) {
-  const [selected, setSelected] = useState<string>(props.categories[0]);
+export default function MenuNav({ categories, setFilter, filter }: MenuNavProps) {
+  const [selected, setSelected] = useState<string>(categories[0] || "");
   const [swiper, setSwiper] = useState<any>(null);
   const [searching, setSearching] = useState<boolean>(false);
 
   const changeSelected = (category: string) => {
     setSelected(category)
     if (swiper && typeof swiper.slideTo === 'function') {
-      swiper.slideTo(props.categories.indexOf(category))
+      swiper.slideTo(categories.indexOf(category))
     } else {
       console.warn('Swiper instance is not initialized');
     }
@@ -28,14 +29,14 @@ export default function MenuNav(props: CategoryNavbarProps) {
 
   const toggleFilter = () => {
     if (searching) {
-      props.setFilter("")
+      setFilter("")
     }
     setSearching(!searching)
   }
 
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     window.scrollTo(0, 90)
-    props.setFilter(event.target.value)
+    setFilter(event.target.value)
   }
 
   return (
@@ -58,7 +59,7 @@ export default function MenuNav(props: CategoryNavbarProps) {
           preventClicks={false}
         >
           <ul className="flex">
-            {props.categories.map((category) => (
+            {categories.map((category) => (
               <SwiperSlide style={{ width: "unset" }} key={category}>
                 <li className="m-2" key={category}>
                   <Link
