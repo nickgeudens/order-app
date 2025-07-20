@@ -1,6 +1,8 @@
 import { Plus, Minus } from 'lucide-react';
-import { Button } from './ui/button';
-import type { MenuItem } from '../types';
+import { Button } from '@/components/ui/button';
+import type { MenuItem } from '@/types';
+import { Badge } from '@/components/ui/badge';
+
 
 export interface ItemProps {
   item: MenuItem;
@@ -28,16 +30,17 @@ export default function Item(props: ItemProps) {
                 src={item.picture}
                 alt={item.name}
               />
-              {item.amount > 0 ? (
-                <span className="absolute -top-2 -right-2 bg-primary text-white rounded-full px-2 py-1 text-xs font-bold">
+                <Badge
+                  variant="round"
+                  className={`transition-all duration-100 absolute -top-2 -right-2 h-6 w-6 px-2 py-1 font-size-sm ${item.amount === 0 && 'h-0 w-0 opacity-0'}`}
+                >
                   {item.amount}
-                </span>
-              ) : null}
+                </Badge>
             </div>
             <div className="flex flex-col m-2 flex-1 min-w-0">
               <p className="m-0 font-bold whitespace-normal leading-tight">{item.name}</p>
               <p className="m-0 text-gray-500 text-sm whitespace-normal leading-tight">{item.description}</p>
-              <p className="m-0 text-sm leading-loose">€{item.price.toFixed(2)}</p>
+              <p className="m-0 text-sm leading-loose">€{item.price?.toFixed(2)}</p>
             </div>
             <span
               className={`flex-shrink-0`}

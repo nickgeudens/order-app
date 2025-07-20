@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Plus, Minus } from 'lucide-react';
-import Checkout from './checkout';
+import { Badge } from '@/components/ui/badge';
 
 export interface BasketItem {
   id?: number;
@@ -21,7 +21,7 @@ export interface BasketProps {
   decrement: (item: BasketItem) => void;
 }
 
-export default function Basket(props: BasketProps): JSX.Element {
+export default function OrderDialog(props: BasketProps) {
   const [show, setShow] = useState<boolean>(false);
 
   const total = props.items
@@ -38,9 +38,12 @@ export default function Basket(props: BasketProps): JSX.Element {
       <DialogTrigger asChild>
         <Button className="flex items-center gap-2">
           Je bestelling
-          <span className="bg-secondary text-secondary-foreground rounded-full px-2 py-1 text-xs font-bold mx-2">
+          <Badge
+            variant="roundsecondary"
+            className="h-5 w-5 m-3 font-size-sm"
+          >
             {total}
-          </span>
+          </Badge>
           <span className="sr-only">bestelling</span>
         </Button>
       </DialogTrigger>
@@ -54,29 +57,34 @@ export default function Basket(props: BasketProps): JSX.Element {
               <React.Fragment key={item.id}>
                 <div className="flex justify-between items-center pb-2">
                   <div className="flex items-center">
-                    <span className="bg-primary text-white rounded-full px-3 py-1 text-xs font-bold mx-3">
+                    <Badge
+                      variant="round"
+                      className="h-7 w-7 mx-3 my-1 font-bold"
+                    >
                       {item.amount}
-                    </span>
+                    </Badge>
                     <div>
                       <h5 className="font-semibold">{item.name}</h5>
                       <h6 className="text-sm text-gray-500">€{(item.price * item.amount).toFixed(2)}</h6>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <button
+                    <Button
+                      variant="secondary"
                       type="button"
                       onClick={(): void => props.decrement(item)}
-                      className="bg-zinc-100 text-zinc-800 rounded-full px-2 py-1 hover:bg-zinc-200 transition"
+                      className="rounded-full mx-2 py-1 h-9 w-9"
                     >
                       <Minus />
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       type="button"
+                      variant={"default"}
                       onClick={(): void => props.increment(item)}
-                      className="bg-zinc-800 text-white rounded-full px-2 py-1 hover:bg-zinc-700 transition"
+                      className="rounded-full mx-2 py-1 h-9 w-9"
                     >
                       <Plus />
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <hr className="my-2 border-zinc-200" />

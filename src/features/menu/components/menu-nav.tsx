@@ -5,14 +5,14 @@ import { Link } from "react-scroll";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Button } from '@/components/ui/button';
-import { Input } from "./ui/input";
+import { Input } from "../../../components/ui/input";
 
 interface CategoryNavbarProps {
   categories: string[];
   setFilter: (filter: string) => void;
 }
 
-export default function CategoryNavbar(props: CategoryNavbarProps) {
+export default function MenuNav(props: CategoryNavbarProps) {
   const [selected, setSelected] = useState<string>(props.categories[0]);
   const [swiper, setSwiper] = useState<any>(null);
   const [searching, setSearching] = useState<boolean>(false);
@@ -85,7 +85,7 @@ export default function CategoryNavbar(props: CategoryNavbarProps) {
         </Swiper>
         <Button
           variant={searching ? "default" : "outline"}
-          className={`ml-2 rounded-full aspect-square flex items-center justify-center p-2`}
+          className={`ml-2 rounded-full flex items-center justify-center p-2 h-9 w-9`}
           onClick={toggleFilter}
           data-slot="search-toggle"
         >

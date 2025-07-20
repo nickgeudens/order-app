@@ -1,148 +1,68 @@
-import React from "react";
-
-import menu from "./menu.json";
-import Item from "./components/item";
-import CategoryNavbar from "./components/navbar";
-import EmptyPage from "./components/empty";
+import MenuNav from "./features/menu/components/menu-nav";
 import Footer from "./components/footer";
-import Basket from "./components/basket";
-import type { MenuItem, AppState } from "./types";
+import OrderDialog from "./components/order-dialog";
+import MenuGrid from "./features/menu/components/menu-grid";
+import { useMenu } from "./features/menu/service/menuService";
 
-// Define AppProps locally
-interface AppProps {}
+function App() {
+  const {
+    menuItems,
+    total,
+    filter,
+    setFilter,
+    incrementItem,
+    decrementItem,
+    resetItem,
+    groupedItems,
+  } = useMenu();
 
-class App extends React.Component<AppProps, AppState> {
-  constructor(props: AppProps) {
-    super(props);
-    const initialMenuItems: MenuItem[] = menu.map((item: MenuItem) => {
-      item.amount = 0;
-      return item;
-    });
-    this.state = {
-      menu_items: initialMenuItems,
-      total: 0,
-      filter: "",
-    };
-  }
+  const grouped = groupedItems();
 
-  getGroupedItems(): { [category: string]: MenuItem[] } {
-    const items = this.state.menu_items
-      .slice()
-      .filter((item) =>
-        item.name.toLowerCase().includes(this.state.filter.toLowerCase()) ||
-        item.category.toLowerCase().includes(this.state.filter.toLowerCase())
-      );
+  return (
+    <>
+      <div className="container mx-auto px-4">
+        {/* <img
+          className="rounded shadow mb-4"
+          src="https://cafehettolhuis.nl/wp/wp-content/uploads/cafe-t-tolhuis-hilversum-slider-3.jpg"
+          alt="Cafe"
+        /> */}
+        <h1 className="mt-3 text-3xl font-bold uppercase">Cafeke</h1>
+        <p className="text-lg text-gray-600">Cafeke</p>
+      </div>
 
-    return items.reduce((group: { [category: string]: MenuItem[] }, item, index) => {
-      if (!group[item.category]) {
-        group[item.category] = [];
-      }
-      item.id = index;
-      group[item.category].push(item);
-      return group;
-    }, {});
-  }
-
-  incrementItem = (item: MenuItem) => {
-    const items = this.state.menu_items.slice();
-    let i = items.indexOf(item);
-    items[i].amount++;
-    this.setState({
-      menu_items: items,
-      total: this.state.total + 1,
-    });
-  };
-
-  decrementItem = (item: MenuItem) => {
-    const items = this.state.menu_items.slice();
-    let i = items.indexOf(item);
-    if (items[i].amount > 0) {
-      items[i].amount--;
-      this.setState({
-        menu_items: items,
-        total: this.state.total - 1,
-      });
-    }
-  };
-
-  resetItem = (item: MenuItem) => {
-    const items = this.state.menu_items.slice();
-    let i = items.indexOf(item);
-    if (items[i].amount > 0) {
-      let previous = items[i].amount;
-      items[i].amount = 0;
-      this.setState({
-        menu_items: items,
-        total: this.state.total - previous,
-      });
-    }
-  };
-
-  setFilter = (filter: string) => {
-    this.setState({
-      filter: filter,
-    });
-  };
-
-  render() {
-    const grouped = this.getGroupedItems();
-    return (
-      <>
-        <div className="container mx-auto px-4">
-          {/* <img
-            className="rounded shadow mb-4"
-            src="https://cafehettolhuis.nl/wp/wp-content/uploads/cafe-t-tolhuis-hilversum-slider-3.jpg"
-            alt="Cafe"
-          /> */}
-          <h1 className="mt-3 text-3xl font-bold uppercase">Cafeke</h1>
-          <p className="text-lg text-gray-600">Cafeke</p>
-        </div>
-
-        <CategoryNavbar
-          categories={Object.keys(grouped)}
-          setFilter={this.setFilter}
+      <MenuNav categories={Object.keys(grouped)} setFilter={setFilter} />
+      <main className="container mx-auto min-h-screen px-4" id="main">
+        {Object.keys(grouped).length === 0 && (
+          <div className="flex flex-col justify-center items-center my-20 w-full">
+            <h2 className="text-muted text-2xl mb-4">Geen resultaten</h2>
+            <img
+              src="assets/dorst.png"
+              className="w-1/2 max-w-md"
+              alt="Geen resultaten"
+            />
+          </div>
+        )}
+        <MenuGrid
+          grouped={grouped}
+          increment={incrementItem}
+          decrement={decrementItem}
+          reset={resetItem}
         />
-        <main className="container mx-auto min-h-screen px-4" id="main">
-          {Object.keys(grouped).length === 0 ? <EmptyPage /> : null}
-          {Object.keys(grouped).map((category) => (
-            <section
-              className="mt-6"
-              id={category.toLowerCase()}
-              key={category.toLowerCase()}
-            >
-              {/* <img className="rounded w-full h-24 object-cover mb-2" src='https://d2j6dbq0eux0bg.cloudfront.net/images/29466296/1759355392.jpg' alt="Category"/> */}
-              <div className="mb-2">
-                <h2 className="text-2xl font-semibold uppercase">{category}</h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {grouped[category].map((item) => (
-                  <Item
-                    key={item.id}
-                    item={item}
-                    increment={() => this.incrementItem(item)}
-                    decrement={() => this.decrementItem(item)}
-                    reset={() => this.resetItem(item)}
-                  />
-                ))}
-              </div>
-            </section>
-          ))}
-        </main>
-        {this.state.total > 0 ? (
-          <nav className="fixed bottom-0 left-0 w-full bg-white shadow-lg h-24 flex items-center z-50">
-            <div className="container mx-auto flex justify-end px-4">
-              <Basket
-                items={this.state.menu_items}
-                increment={this.incrementItem}
-                decrement={this.decrementItem}
-              />
-            </div>
-          </nav>
-        ) : null}
-        <Footer />
-      </>
-    );
-  }
+      </main>
+      {total > 0 ? (
+        <nav className="fixed bottom-0 left-0 w-full bg-white shadow-lg h-24 flex items-center z-50">
+          <div className="container mx-auto flex justify-end px-4">
+            <OrderDialog
+              items={menuItems}
+              increment={incrementItem}
+              decrement={decrementItem}
+            />
+          </div>
+        </nav>
+      ) : null}
+      <Footer />
+    </>
+  );
 }
 
 export default App;
