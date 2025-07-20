@@ -6,14 +6,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from "../../../components/ui/input";
+import { useMenuContext } from "../service/menuService";
 
-interface MenuNavProps {
-  categories: string[];
-  setFilter: (filter: string) => void;
-  filter: string;
-}
-
-export default function MenuNav({ categories, setFilter, filter }: MenuNavProps) {
+export default function MenuNav() {
+  const { categorizedItems, setFilter, filter } = useMenuContext();
+  const categories = Object.keys(categorizedItems);
   const [selected, setSelected] = useState<string>(categories[0] || "");
   const [swiper, setSwiper] = useState<any>(null);
   const [searching, setSearching] = useState<boolean>(false);

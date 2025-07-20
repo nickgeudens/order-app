@@ -2,7 +2,6 @@ import { Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { MenuItem } from '@/types';
 import { Badge } from '@/components/ui/badge';
-import { useMenu } from "../service/menuService";
 
 
 export interface ItemProps {

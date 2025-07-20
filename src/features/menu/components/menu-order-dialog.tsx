@@ -1,31 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Plus, Minus } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { useMenu } from "@/features/menu/service/menuService";
+import { useMenuContext } from "@/features/menu/service/menuService";
 
 export default function OrderDialog() {
   const [show, setShow] = useState<boolean>(false);
-  const { menuItems, incrementItem, decrementItem } = useMenu();
-  const [items, setItems] = useState(menuItems);
-  const [total, setTotal] = useState("0");
-  const [totalPrice, setTotalPrice] = useState("0.00");
-
-  useEffect(() => {
-    console.log("Menu items updated:", menuItems);
-    setItems(menuItems);
-    const newTotal = menuItems
-      .map((item) => item.amount)
-      .reduce((partialSum, a) => partialSum + a, 0)
-      .toFixed(0);
-    setTotal(newTotal);
-    const newTotalPrice = menuItems
-      .map((item) => item.amount * item.price)
-      .reduce((partialSum, a) => partialSum + a, 0)
-      .toFixed(2);
-    setTotalPrice(newTotalPrice);
-  }, [menuItems]);
+  const { menuItems, total, totalPrice, incrementItem, decrementItem } = useMenuContext();
 
   return (
     <Dialog open={show} onOpenChange={setShow}>
@@ -46,7 +28,7 @@ export default function OrderDialog() {
           <DialogTitle>Je bestelling</DialogTitle>
         </DialogHeader>
         <div className="py-4">
-          {items.map((item) =>
+          {menuItems.map((item) =>
             item.amount > 0 ? (
               <React.Fragment key={item.id}>
                 <div className="flex justify-between items-center pb-2">
@@ -87,7 +69,7 @@ export default function OrderDialog() {
           )}
         </div>
         <DialogFooter>
-          <h4 className="font-bold text-lg mr-auto">€{totalPrice}</h4>
+          <h4 className="font-bold text-lg mr-auto">€{totalPrice.toFixed(2)}</h4>
           <Button variant="default" type="button" onClick={(): void => setShow(false)}>
             Bestel
           </Button>

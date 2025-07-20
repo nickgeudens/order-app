@@ -1,18 +1,11 @@
+
+import { useMenuContext } from "../service/menuService";
 import Item from "./menu-item";
 
-interface MenuGridProps {
-  categorizedItems: { [category: string]: any[] };
-  incrementItem: (item: any) => void;
-  decrementItem: (item: any) => void;
-  resetItem: (item: any) => void;
-}
+export default function MenuGrid() {
+  const { categorizedItems, incrementItem, decrementItem, resetItem } =
+    useMenuContext();
 
-export default function MenuGrid({
-  categorizedItems,
-  incrementItem,
-  decrementItem,
-  resetItem,
-}: MenuGridProps) {
   return (
     <>
       {Object.keys(categorizedItems).length === 0 && (
