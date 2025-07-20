@@ -1,22 +1,17 @@
-
 import MenuNav from "./features/menu/components/menu-nav";
 import Footer from "./components/footer";
 import OrderDialog from "./features/menu/components/menu-order-dialog";
 import MenuGrid from "./features/menu/components/menu-grid";
-import { MenuProvider, useMenuContext } from "./features/menu/service/menuService";
+import {
+  MenuProvider,
+  useMenuContext,
+} from "./features/menu/service/menuService";
 
 export default function App() {
+  const { total } = useMenuContext();
+
   return (
     <MenuProvider>
-      <AppContent />
-    </MenuProvider>
-  );
-}
-
-function AppContent() {
-  const { total } = useMenuContext();
-  return (
-    <>
       <div className="container mx-auto px-4">
         {/* <img
           className="rounded shadow mb-4"
@@ -38,6 +33,6 @@ function AppContent() {
         </nav>
       )}
       <Footer />
-    </>
+    </MenuProvider>
   );
 }
