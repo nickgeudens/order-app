@@ -1,28 +1,43 @@
-import React, { useState } from 'react';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
-import { Plus, Minus } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import React, { useState } from "react";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Plus, Minus } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { useMenuContext } from "@/features/menu/service/menuService";
 
-export default function OrderDialog() {
+export default function MenuOrder() {
   const [show, setShow] = useState<boolean>(false);
-  const { menuItems, total, totalPrice, incrementItem, decrementItem } = useMenuContext();
+  const { menuItems, total, totalPrice, incrementItem, decrementItem } =
+    useMenuContext();
 
   return (
     <Dialog open={show} onOpenChange={setShow}>
-      <DialogTrigger asChild>
-        <Button className="flex items-center gap-2">
-          Je bestelling
-          <Badge
-            variant="roundsecondary"
-            className="h-5 w-5 m-3 font-size-sm"
-          >
-            {total}
-          </Badge>
-          <span className="sr-only">bestelling</span>
-        </Button>
-      </DialogTrigger>
+      {total > 0 && (
+        <nav className="fixed bottom-0 left-0 w-full bg-white shadow-lg h-24 flex items-center z-50">
+          <div className="container mx-auto flex justify-end px-4">
+            <DialogTrigger asChild>
+              <Button className="flex items-center gap-2">
+                Je bestelling
+                <Badge
+                  variant="roundsecondary"
+                  className="h-5 w-5 m-3 font-size-sm"
+                >
+                  {total}
+                </Badge>
+                <span className="sr-only">bestelling</span>
+              </Button>
+            </DialogTrigger>
+          </div>
+        </nav>
+      )}
+
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Je bestelling</DialogTitle>
@@ -41,7 +56,9 @@ export default function OrderDialog() {
                     </Badge>
                     <div>
                       <h5 className="font-semibold">{item.name}</h5>
-                      <h6 className="text-sm text-gray-500">€{(item.price * item.amount).toFixed(2)}</h6>
+                      <h6 className="text-sm text-gray-500">
+                        €{(item.price * item.amount).toFixed(2)}
+                      </h6>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -69,8 +86,14 @@ export default function OrderDialog() {
           )}
         </div>
         <DialogFooter>
-          <h4 className="font-bold text-lg mr-auto">€{totalPrice.toFixed(2)}</h4>
-          <Button variant="default" type="button" onClick={(): void => setShow(false)}>
+          <h4 className="font-bold text-lg mr-auto">
+            €{totalPrice.toFixed(2)}
+          </h4>
+          <Button
+            variant="default"
+            type="button"
+            onClick={(): void => setShow(false)}
+          >
             Bestel
           </Button>
         </DialogFooter>
