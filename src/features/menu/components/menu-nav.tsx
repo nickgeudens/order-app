@@ -19,8 +19,10 @@ export default function MenuNav(props: CategoryNavbarProps) {
 
   const changeSelected = (category: string) => {
     setSelected(category)
-    if (swiper) {
+    if (swiper && typeof swiper.slideTo === 'function') {
       swiper.slideTo(props.categories.indexOf(category))
+    } else {
+      console.warn('Swiper instance is not initialized');
     }
   }
 
@@ -39,7 +41,7 @@ export default function MenuNav(props: CategoryNavbarProps) {
   return (
     <nav className="sticky top-0 bg-background border-b-1 border-t-1 py-0 h-16 z-10">
       <div className="container mx-auto flex items-center h-full px-2">
-        {searching ? (
+        {searching && (
           <Input
             autoFocus
             type="text"
@@ -47,7 +49,7 @@ export default function MenuNav(props: CategoryNavbarProps) {
             className="w-full rounded-full  px-4 py-2 mx-1 me-2 my-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
             onChange={onSearch}
           />
-        ) : null}
+        )}
         <Swiper
           className={searching ? "hidden" : ""}
           slidesPerView="auto"

@@ -2,17 +2,18 @@ import { Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { MenuItem } from '@/types';
 import { Badge } from '@/components/ui/badge';
+import { useMenu } from "../service/menuService";
 
 
 export interface ItemProps {
   item: MenuItem;
-  increment: (item: MenuItem) => void;
-  decrement: (item: MenuItem) => void;
-  reset: (item: MenuItem) => void;
+  incrementItem?: () => void;
+  decrementItem?: () => void;
+  resetItem?: () => void;
 }
 
 export default function Item(props: ItemProps) {
-  const { item, increment, decrement } = props;
+  const { item, incrementItem, decrementItem } = props;
   return (
       <div className={`flex items-center border rounded-md overflow-hidden ${
         item.unavailable ? 'saturate-0 brightness-90 pointer-events-none' : ''
@@ -21,7 +22,7 @@ export default function Item(props: ItemProps) {
           <Button
             variant="ghost"
             className={`flex items-center flex-1 p-0 pr-6 text-left justify-start h-full rounded-md min-w-0 ${item.amount > 0 ? 'rounded-r-none' : ''} ${!item.unavailable ? 'hover:bg-gray-50 active:bg-gray-100' : ''}`}
-            onClick={() => increment(item)}
+            onClick={() => incrementItem && incrementItem()}
             disabled={item.unavailable}
           >
             <div className="flex m-3 h-[3rem] w-[3rem] relative align-middle flex-shrink-0">
@@ -32,7 +33,7 @@ export default function Item(props: ItemProps) {
               />
                 <Badge
                   variant="round"
-                  className={`transition-all duration-100 absolute -top-2 -right-2 h-6 w-6 px-2 py-1 font-size-sm ${item.amount === 0 && 'h-0 w-0 opacity-0'}`}
+                  className={`transition-all duration-50 absolute -top-2 -right-2 h-6 w-6 px-2 py-1 font-size-sm ${item.amount === 0 && 'h-0 w-0 opacity-0'}`}
                 >
                   {item.amount}
                 </Badge>
@@ -56,7 +57,7 @@ export default function Item(props: ItemProps) {
             }`}
             onClick={(e) => {
               e.stopPropagation();
-              decrement(item);
+              decrementItem && decrementItem();
             }}
           >
             <span className="flex justify-center items-center">

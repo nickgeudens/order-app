@@ -6,17 +6,11 @@ import { useMenu } from "./features/menu/service/menuService";
 
 function App() {
   const {
-    menuItems,
     total,
-    filter,
     setFilter,
-    incrementItem,
-    decrementItem,
-    resetItem,
-    groupedItems,
+    categorizedItems,
   } = useMenu();
 
-  const grouped = groupedItems();
 
   return (
     <>
@@ -30,9 +24,9 @@ function App() {
         <p className="text-lg text-gray-600">Cafeke</p>
       </div>
 
-      <MenuNav categories={Object.keys(grouped)} setFilter={setFilter} />
+      <MenuNav categories={Object.keys(categorizedItems)} setFilter={setFilter} />
       <main className="container mx-auto min-h-screen px-4" id="main">
-        {Object.keys(grouped).length === 0 && (
+        {Object.keys(categorizedItems).length === 0 && (
           <div className="flex flex-col justify-center items-center my-20 w-full">
             <h2 className="text-muted text-2xl mb-4">Geen resultaten</h2>
             <img
@@ -42,24 +36,15 @@ function App() {
             />
           </div>
         )}
-        <MenuGrid
-          grouped={grouped}
-          increment={incrementItem}
-          decrement={decrementItem}
-          reset={resetItem}
-        />
+        <MenuGrid/>
       </main>
-      {total > 0 ? (
+      {total > 0 && (
         <nav className="fixed bottom-0 left-0 w-full bg-white shadow-lg h-24 flex items-center z-50">
           <div className="container mx-auto flex justify-end px-4">
-            <OrderDialog
-              items={menuItems}
-              increment={incrementItem}
-              decrement={decrementItem}
-            />
+            <OrderDialog/>
           </div>
         </nav>
-      ) : null}
+      )}
       <Footer />
     </>
   );

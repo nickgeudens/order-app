@@ -3,32 +3,18 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 import { Button } from '@/components/ui/button';
 import { Plus, Minus } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { useMenu } from "@/features/menu/service/menuService";
 
-export interface BasketItem {
-  id?: number;
-  name: string;
-  description: string;
-  price: number;
-  picture: string;
-  category: string;
-  amount: number;
-  unavailable?: boolean;
-}
-
-export interface BasketProps {
-  items: BasketItem[];
-  increment: (item: BasketItem) => void;
-  decrement: (item: BasketItem) => void;
-}
-
-export default function OrderDialog(props: BasketProps) {
+export default function OrderDialog() {
   const [show, setShow] = useState<boolean>(false);
+  const { menuItems, incrementItem, decrementItem } = useMenu();
 
-  const total = props.items
+  const items = menuItems;
+  const total = items
     .map((item) => item.amount)
     .reduce((partialSum, a) => partialSum + a, 0)
     .toFixed(0);
-  const totalPrice = props.items
+  const totalPrice = items
     .map((item) => item.amount * item.price)
     .reduce((partialSum, a) => partialSum + a, 0)
     .toFixed(2);
@@ -52,7 +38,7 @@ export default function OrderDialog(props: BasketProps) {
           <DialogTitle>Je bestelling</DialogTitle>
         </DialogHeader>
         <div className="py-4">
-          {props.items.map((item) =>
+          {items.map((item) =>
             item.amount > 0 ? (
               <React.Fragment key={item.id}>
                 <div className="flex justify-between items-center pb-2">
@@ -72,7 +58,7 @@ export default function OrderDialog(props: BasketProps) {
                     <Button
                       variant="secondary"
                       type="button"
-                      onClick={(): void => props.decrement(item)}
+                      onClick={(): void => decrementItem(item)}
                       className="rounded-full mx-2 py-1 h-9 w-9"
                     >
                       <Minus />
@@ -80,7 +66,7 @@ export default function OrderDialog(props: BasketProps) {
                     <Button
                       type="button"
                       variant={"default"}
-                      onClick={(): void => props.increment(item)}
+                      onClick={(): void => incrementItem(item)}
                       className="rounded-full mx-2 py-1 h-9 w-9"
                     >
                       <Plus />

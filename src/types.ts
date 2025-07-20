@@ -2,7 +2,7 @@ export interface MenuItem {
   id?: number;
   name: string;
   description?: string;
-  price?: number;
+  price: number;
   picture?: string;
   category: string;
   amount: number;
@@ -13,4 +13,15 @@ export interface AppState {
   menu_items: MenuItem[];
   total: number;
   filter: string;
+}
+
+export interface OrderItem {
+  id?: number;
+  name: string;
+  description: string;
+  price: number;
+  picture: string;
+  category: string;
+  amount: number;
+  unavailable?: boolean;
 }

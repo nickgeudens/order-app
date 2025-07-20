@@ -1,21 +1,30 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import menu from "./menu.json";
 import type { MenuItem } from "@/types";
 
 export function useMenu() {
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [menuItems, setMenuItems] = useState<MenuItem[]>(menu.map((item, idx: number) => ({
+    ...item,
+    amount: 0,
+    id: idx,
+  })));
   const [total, setTotal] = useState(0);
   const [filter, setFilter] = useState("");
+  const [categorizedItems, setCategorizedItems] = useState<{ [category: string]: MenuItem[] }>({});
 
   useEffect(() => {
-    setMenuItems(
-      menu.map((item, idx: number) => ({
-        ...item,
-        amount: 0,
-        id: idx,
-      }))
+    const filtered = menuItems.filter(
+      item =>
+        item.name.toLowerCase().includes(filter.toLowerCase()) ||
+        item.category.toLowerCase().includes(filter.toLowerCase())
     );
-  }, []);
+    const grouped = filtered.reduce((group: { [category: string]: MenuItem[] }, item) => {
+      if (!group[item.category]) group[item.category] = [];
+      group[item.category].push(item);
+      return group;
+    }, {});
+    setCategorizedItems(grouped);
+  }, [menuItems, filter]);
 
   const incrementItem = (item: MenuItem) => {
     setMenuItems(items => {
@@ -47,19 +56,6 @@ export function useMenu() {
     });
   };
 
-  const groupedItems = () => {
-    const filtered = menuItems.filter(
-      item =>
-        item.name.toLowerCase().includes(filter.toLowerCase()) ||
-        item.category.toLowerCase().includes(filter.toLowerCase())
-    );
-    return filtered.reduce((group: { [category: string]: MenuItem[] }, item) => {
-      if (!group[item.category]) group[item.category] = [];
-      group[item.category].push(item);
-      return group;
-    }, {});
-  };
-
   return {
     menuItems,
     total,
@@ -68,6 +64,6 @@ export function useMenu() {
     incrementItem,
     decrementItem,
     resetItem,
-    groupedItems,
+    categorizedItems,
   };
 }

@@ -1,30 +1,35 @@
-import type { MenuItem } from "../../../types";
-import MenuSection from "./menu-section";
+import Item from "./menu-item";
+import { useMenu } from "../service/menuService";
 
-interface MenuGridProps {
-  grouped: { [category: string]: MenuItem[] };
-  increment: (item: MenuItem) => void;
-  decrement: (item: MenuItem) => void;
-  reset: (item: MenuItem) => void;
-}
+export default function MenuGrid() {
+  const { categorizedItems, incrementItem, decrementItem, resetItem } = useMenu();
+  
+  // Use categorizedItems directly as an object
+  const grouped = categorizedItems;
 
-export default function MenuGrid({
-  grouped,
-  increment,
-  decrement,
-  reset,
-}: MenuGridProps) {
   return (
     <>
       {Object.keys(grouped).map(category => (
-        <MenuSection
-          key={category}
-          category={category}
-          items={grouped[category]}
-          increment={increment}
-          decrement={decrement}
-          reset={reset}
-        />
+        <section
+          className="mt-6"
+          id={category.toLowerCase()}
+          key={category.toLowerCase()}
+        >
+          <div className="mb-2">
+            <h2 className="text-2xl font-semibold uppercase">{category}</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {grouped[category].map((item, idx) => (
+              <Item
+                key={idx}
+                item={item}
+                incrementItem={() => incrementItem(item)}
+                decrementItem={() => decrementItem(item)}
+                resetItem={() => resetItem(item)}
+              />
+            ))}
+          </div>
+        </section>
       ))}
     </>
   );
