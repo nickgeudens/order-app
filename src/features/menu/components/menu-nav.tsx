@@ -32,12 +32,13 @@ export default function MenuNav() {
   }
 
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    window.scrollTo(0, 90)
     setFilter(event.target.value)
   }
 
   return (
-    <nav className="sticky top-0 bg-background border-b-1 border-t-1 py-0 h-16 z-10">
+    <nav
+      className="sticky top-0 z-50 bg-background border-b border-t h-16 pt-[env(safe-area-inset-top)]"
+    >
       <div className="container mx-auto flex items-center h-full px-2">
         {searching && (
           <Input
