@@ -1,3 +1,3 @@
-docker build --platform=linux/arm64 -t nickgeudens01/order .
-docker push nickgeudens01/order
-docker run --platform=linux/arm64 -ti -p 8080:80 nickgeudens01/order
+docker build --platform=linux/amd64 -t registry.nas.local/order-app .
+docker push registry.nas.local/order-app
+docker run --platform=linux/amd64 -ti -p 8080:80 registry.nas.local/order-app

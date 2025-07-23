@@ -20,7 +20,7 @@ export default function MenuGrid() {
       )}
       {Object.entries(categorizedItems).map(([category, items]) => (
         <section
-          className="mt-6"
+          className="mt-6 mb-6"
           id={category.toLowerCase()}
           key={category.toLowerCase()}
         >

@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-app
+  template:
+    metadata:
+      labels:
+        app: order-app
+    spec:
+      containers:
+      - name: order-app
+        image: registry.nas.local/order-app
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "256m"
+          requests:
+            memory: "256Mi"
+            cpu: "50m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-app
+  namespace: default
+spec:
+  selector:
+    app: order-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+  type: ClusterIP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: order-app
+  namespace: default
+  annotations:
+    cert-manager.io/cluster-issuer: local-issuer
+    cert-manager.io/renew-before: "720h"
+    cert-manager.io/duration: "8760h"
+    cert-manager.io/common-name: order-app.nas.local
+spec:
+  rules:
+  - host: order-app.nas.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: order-app
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - order-app.nas.local
+    secretName: order-app.nas.local
