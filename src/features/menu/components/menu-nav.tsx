@@ -84,7 +84,7 @@ export default function MenuNav() {
                   >
                     <NavButton
                       variant={selected === category ? "active" : "default"}
-                      className={`px-4 py-2 rounded-full`}
+                      className={`px-4 py-2 rounded-full uppercase text-xs`}
                       data-slot="category-badge"
                     >
                       {category}

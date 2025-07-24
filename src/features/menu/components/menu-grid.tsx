@@ -1,4 +1,5 @@
 
+import { Separator } from "@/components/ui/separator";
 import { useMenuContext } from "../service/menuService";
 import Item from "./menu-item";
 
@@ -20,22 +21,27 @@ export default function MenuGrid() {
       )}
       {Object.entries(categorizedItems).map(([category, items]) => (
         <section
-          className="mt-6 mb-6"
+          className="mt-6 mb-10"
           id={category.toLowerCase()}
           key={category.toLowerCase()}
         >
           <div className="mb-2">
             <h2 className="text-2xl font-semibold uppercase">{category}</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
             {items.map((item, idx) => (
-              <Item
-                key={idx}
-                item={item}
-                incrementItem={() => incrementItem(item)}
-                decrementItem={() => decrementItem(item)}
-                resetItem={() => resetItem(item)}
-              />
+              <>
+                <Item
+                  key={idx}
+                  item={item}
+                  incrementItem={() => incrementItem(item)}
+                  decrementItem={() => decrementItem(item)}
+                  resetItem={() => resetItem(item)}
+                />
+                {(idx < items.length - 1) && (
+                  <Separator className="px-4 w-90 justify-self-center" />
+                )}
+              </>
             ))}
           </div>
         </section>
