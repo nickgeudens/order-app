@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Search, X } from 'lucide-react';
 import { Link } from "react-scroll";
@@ -9,11 +9,17 @@ import { Input } from "../../../components/ui/input";
 import { useMenuContext } from "../service/menuService";
 
 export default function MenuNav() {
-  const { categorizedItems, setFilter, filter } = useMenuContext();
+  const { categorizedItems, setFilter } = useMenuContext();
   const categories = Object.keys(categorizedItems);
-  const [selected, setSelected] = useState<string>(categories[0] || "");
+  const [selected, setSelected] = useState<string>();
   const [swiper, setSwiper] = useState<any>(null);
   const [searching, setSearching] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (categories.length > 0 && !selected) {
+      setSelected(categories[0]);
+    }
+  }, [categories, selected]);
 
   const changeSelected = (category: string) => {
     setSelected(category)
@@ -33,6 +39,10 @@ export default function MenuNav() {
 
   const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(event.target.value)
+  }
+
+  if (!selected) {
+    return null; // or a loading state
   }
 
   return (
