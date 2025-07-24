@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from "../../../components/ui/input";
 import { useMenuContext } from "../service/menuService";
+import NavButton from "@/components/ui/nav-button";
 
 export default function MenuNav() {
   const { categorizedItems, setFilter } = useMenuContext();
@@ -81,13 +82,14 @@ export default function MenuNav() {
                     spyThrottle={300}
                     onSetActive={() => changeSelected(category)}
                   >
-                    <Button
+                    <NavButton
+                      visible={(selected === category)}
                       variant={selected === category ? "default" : "ghost"}
                       className={`px-4 py-2 rounded-full`}
                       data-slot="category-badge"
                     >
                       {category}
-                    </Button>
+                    </NavButton>
                   </Link>
                 </li>
               </SwiperSlide>
