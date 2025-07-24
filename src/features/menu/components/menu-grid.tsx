@@ -27,7 +27,7 @@ export default function MenuGrid() {
           <div className="mb-2">
             <h2 className="text-2xl font-semibold uppercase">{category}</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
             {items.map((item, idx) => (
               <Item
                 key={idx}

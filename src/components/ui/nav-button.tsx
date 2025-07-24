@@ -10,17 +10,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
+        active:
           "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "border hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+        default:
+          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50"
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -30,7 +23,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "active",
       size: "default",
     },
   }
@@ -41,7 +34,6 @@ export default function NavButton({
   variant,
   size,
   asChild = false,
-  visible = false,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
@@ -52,7 +44,7 @@ export default function NavButton({
   return (
       <span className="relative inline-block">
       <AnimatePresence initial={false}>
-        {visible && (
+        {variant === "active" && (
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -60,7 +52,7 @@ export default function NavButton({
             exit={{ opacity: 0, scale: 0 }}
             key="background"
             className={cn(
-              buttonVariants({ variant: "default", size, className }),
+              buttonVariants({ variant: "active", size, className }),
               "absolute inset-0 z-0"
             )}
           />
