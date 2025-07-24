@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Search, X } from 'lucide-react';
 import { Link } from "react-scroll";
@@ -48,7 +48,7 @@ export default function MenuNav() {
 
   return (
     <nav
-      className="sticky top-0 z-50 bg-background border-b border-t h-16 pt-[env(safe-area-inset-top)]"
+      className="sticky top-0 z-50 bg-secondary border-b border-t h-16 pt-[env(safe-area-inset-top)]"
     >
       <div className="container mx-auto flex items-center h-full px-2">
         {searching && (
@@ -56,7 +56,7 @@ export default function MenuNav() {
             autoFocus
             type="text"
             placeholder="Zoeken"
-            className="w-full rounded-full  px-4 py-2 mx-1 me-2 my-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+            className="bg-background w-full rounded-full px-4 py-2 mx-1 me-2 my-2 text-sm"
             onChange={onSearch}
           />
         )}
@@ -97,7 +97,7 @@ export default function MenuNav() {
         </Swiper>
         <Button
           variant={searching ? "default" : "outline"}
-          className={`ml-2 rounded-full flex items-center justify-center p-2 h-9 w-9`}
+          className={`ml-2 rounded-full flex items-center justify-center p-2 h-9 w-9 border-primary/50`}
           onClick={toggleFilter}
           data-slot="search-toggle"
         >

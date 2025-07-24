@@ -2,28 +2,29 @@ import { Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { MenuItem } from "@/types";
 import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 export interface ItemProps {
   item: MenuItem;
   incrementItem?: () => void;
   decrementItem?: () => void;
   resetItem?: () => void;
+  separator?: boolean;
 }
 
 export default function Item(props: ItemProps) {
   const { item, incrementItem, decrementItem } = props;
   return (
     <div
-      className={`flex items-center rounded-md ${
-        item.unavailable ? "saturate-0 brightness-90 pointer-events-none" : ""
+      className={`flex flex-col rounded-md ${
+        item.unavailable ? "saturate-50" : ""
       }`}
     >
       <div className="flex flex-1 h-full min-w-0">
         <Button
           variant={item.amount > 0 ? "secondary" : "ghost"}
           className={`flex items-center flex-1 p-0 pr-6 text-left justify-start h-full rounded-md min-w-0 ${
-            item.amount > 0 ? "rounded-r-none" : ""
-          } ${!item.unavailable ? "hover:bg-gray-50 active:bg-gray-100" : ""}`}
+            item.amount > 0 ? "rounded-r-none" : ""}`}
           onClick={() => incrementItem && incrementItem()}
           disabled={item.unavailable}
         >
@@ -73,10 +74,11 @@ export default function Item(props: ItemProps) {
           }}
         >
           <span className="flex justify-center items-center">
-            <Minus />
+            <Minus className={`${item.amount == 0 && "hidden"}`} />
           </span>
         </Button>
       </div>
+      {props.separator && <Separator className="px-4 w-90 mx-auto mt-2" />}
     </div>
   );
 }

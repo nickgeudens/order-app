@@ -20,14 +20,14 @@ export default function MenuOrder() {
   return (
     <Dialog open={show} onOpenChange={setShow}>
       {total > 0 && (
-        <nav className="fixed bottom-0 left-0 w-full bg-white shadow-lg h-24 flex items-center z-50">
+        <nav className="fixed bottom-0 left-0 w-full bg-background border-t-1 shadow-xl h-24 flex items-center z-50">
           <div className="container mx-auto flex justify-end px-4">
             <DialogTrigger asChild>
-              <Button className="flex items-center gap-2">
-                Je bestelling
+              <Button className="flex items-center gap-2 h-12">
+                Je Bestelling
                 <Badge
                   variant="roundsecondary"
-                  className="h-5 w-5 m-3 font-size-sm"
+                  className="h-6 w-6 m-3 font-size-sm"
                 >
                   {total}
                 </Badge>
@@ -38,13 +38,15 @@ export default function MenuOrder() {
         </nav>
       )}
 
-      <DialogContent className="max-w-2xl">
+      <DialogContent
+        className="flex max-w-2xl max-h-[70vh] flex-col"
+      >
         <DialogHeader>
           <DialogTitle>Je bestelling</DialogTitle>
         </DialogHeader>
-        <div className="py-4">
+        <div className="py-4 overflow-y-auto flex-1">
           {menuItems.map((item) =>
-            item.amount > 0 ? (
+            item.amount > 0 && (
               <React.Fragment key={item.id}>
                 <div className="flex justify-between items-center pb-2">
                   <div className="flex items-center">
@@ -80,9 +82,9 @@ export default function MenuOrder() {
                     </Button>
                   </div>
                 </div>
-                <hr className="my-2 border-zinc-200" />
+                <hr className="my-2" />
               </React.Fragment>
-            ) : null
+            )
           )}
         </div>
         <DialogFooter>
