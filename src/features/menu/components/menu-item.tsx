@@ -26,7 +26,7 @@ export default function Item(props: ItemProps) {
           >
             <div className="flex m-3 h-[3rem] w-[3rem] relative align-middle flex-shrink-0">
               <img
-                className="max-w-[3rem] max-h-[3rem] rounded object-contain"
+                className="max-w-full max-h-full m-auto rounded object-contain"
                 src={item.picture}
                 alt={item.name}
               />

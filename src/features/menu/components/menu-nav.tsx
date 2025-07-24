@@ -83,7 +83,7 @@ export default function MenuNav() {
                     onSetActive={() => changeSelected(category)}
                   >
                     <NavButton
-                      visible={(selected === category)}
+                      visible={(selected === category) || false}
                       variant={selected === category ? "default" : "ghost"}
                       className={`px-4 py-2 rounded-full`}
                       data-slot="category-badge"
