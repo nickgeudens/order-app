@@ -73,7 +73,7 @@ export default function MenuNav() {
                   <Link
                     key={category.toLowerCase()}
                     spy
-                    hashSpy
+                    hashSpy={false}
                     duration={300}
                     smooth={true}
                     to={category.toLowerCase()}

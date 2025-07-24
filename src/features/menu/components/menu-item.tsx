@@ -45,7 +45,11 @@ export default function Item(props: ItemProps) {
             <span
               className={`flex-shrink-0`}
             >
-              <Plus className={'opacity-30'} />
+              {item.unavailable ? (
+                <Badge variant="secondary">Niet beschikbaar</Badge>
+              ) : (
+                <Plus className={'opacity-30'} />
+              )}
             </span>
           </Button>
           {/* Minus button */}
