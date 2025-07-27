@@ -572,7 +572,8 @@
   {
     "category": "Sharing & Apero Plates 🍝",
     "name": "Loaded Nacho's Vegan",
-    "soldOut": true
+    "unavailable": true,
+    "price": 18.50
   },
   {
     "category": "Sharing & Apero Plates 🍝",
@@ -589,7 +590,8 @@
   {
     "category": "Sharing & Apero Plates 🍝",
     "name": "Loaded Potato Scoops Vegan",
-    "soldOut": true,
+    "price": 18.50,
+    "unavailable": true,
     "description": "Rustieke frietjes met topping van huisgemaakte BBQ Jackfruit"
   },
   {

@@ -24,25 +24,37 @@ export default function Item(props: ItemProps) {
         <Button
           variant={item.amount > 0 ? "secondary" : "ghost"}
           className={`flex items-center flex-1 p-0 pr-6 text-left justify-start h-full rounded-md min-w-0 ${
-            item.amount > 0 ? "rounded-r-none" : ""}`}
+            item.amount > 0 ? "rounded-r-none" : ""
+          }`}
           onClick={() => incrementItem && incrementItem()}
           disabled={item.unavailable}
         >
-          <div className="flex m-3 h-[3rem] w-[3rem] relative align-middle flex-shrink-0">
-            <img
-              className="max-w-full max-h-full m-auto rounded object-contain"
-              src={item.picture}
-              alt={item.name}
-            />
+          {item.picture ? (
+            <div className="flex m-3 h-[3rem] w-[3rem] relative align-middle flex-shrink-0">
+              <img
+                className="max-w-full max-h-full m-auto rounded object-contain"
+                src={item.picture}
+                alt={item.name}
+              />
+              <Badge
+                variant="round"
+                className={`transition-all duration-50 absolute -top-2 -right-2 h-6 w-6 px-2 py-1 font-size-sm ${
+                  item.amount === 0 && "h-0 w-0 opacity-0"
+                }`}
+              >
+                {item.amount}
+              </Badge>
+            </div>
+          ) : (
             <Badge
               variant="round"
-              className={`transition-all duration-50 absolute -top-2 -right-2 h-6 w-6 px-2 py-1 font-size-sm ${
-                item.amount === 0 && "h-0 w-0 opacity-0"
+              className={`transition-all duration-100 h-8 w-8 m-2 font-size-sm ${
+                item.amount === 0 && "m-0 h-0 w-0 opacity-0"
               }`}
             >
               {item.amount}
             </Badge>
-          </div>
+          )}
           <div className="flex flex-col m-2 flex-1 min-w-0">
             <p className="m-0 font-bold whitespace-normal leading-tight">
               {item.name}
