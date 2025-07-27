@@ -66,6 +66,7 @@ export default function MenuNav() {
           direction="horizontal"
           onSwiper={setSwiper}
           preventClicks={false}
+          touchStartPreventDefault={false}
         >
           <ul className="flex">
             {categories.map((category) => (
@@ -97,7 +98,7 @@ export default function MenuNav() {
         </Swiper>
         <Button
           variant={searching ? "default" : "outline"}
-          className={`ml-2 rounded-full flex items-center justify-center p-2 h-9 w-9 border-primary/50`}
+          className={`ml-2 rounded-full flex items-center justify-center p-2 h-9 w-9 border-1`}
           onClick={toggleFilter}
           data-slot="search-toggle"
         >

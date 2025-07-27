@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import menu from "./menu.json";
+import menu from "./menu2.json";
 import type { MenuItem } from "@/types";
 
 interface MenuContextType {

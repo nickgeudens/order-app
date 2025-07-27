@@ -1,0 +1,633 @@
+[
+  {
+    "category": "Van 't vat 🍺",
+    "name": "Kasteelbier Rubus",
+    "price": 4.30
+  },
+  {
+    "category": "Van 't vat 🍺",
+    "name": "Kasteelbier Tropical 33cl",
+    "price": 4.50
+  },
+  {
+    "category": "Van 't vat 🍺",
+    "name": "Tripel D'anvers",
+    "price": 4.50
+  },
+  {
+    "category": "Van 't vat 🍺",
+    "name": "Karmeliet 33cl",
+    "price": 4.50
+  },
+  {
+    "category": "Van 't vat 🍺",
+    "name": "Kasteelbier Rouge 33cl",
+    "price": 4.50
+  },
+  {
+    "category": "Van 't vat 🍺",
+    "name": "Stella",
+    "price": 3.00
+  },
+
+  {
+    "category": "Frisdranken 🥤",
+    "name": "SPA plat",
+    "price": 2.80
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "SPA Bruis",
+    "price": 2.80
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Pepsi",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Pepsi Zero",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Mirinda Orange Limonade",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "7 Up",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Orangina",
+    "price": 3.40
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Lipton Ice tea",
+    "price": 3.20
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Lipton Ice tea Zero",
+    "price": 3.20
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Lipton Ice tea Green",
+    "price": 3.20
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Oasis Tropical",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Looza ACE",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Looza appelkers",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Looza apple",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Looza Orange",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Looza grapefruit",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Inza Chocomelk",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Fristi",
+    "price": 3.00
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Tonic Schweppes",
+    "price": 3.40
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Agrum Schweppes",
+    "price": 3.40
+  },
+  {
+    "category": "Frisdranken 🥤",
+    "name": "Bitter lemon Schweppes",
+    "price": 3.40
+  },
+
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Duvel",
+    "price": 4.70
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Filou",
+    "price": 4.20
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Liefmans on the rocks",
+    "price": 4.20
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Liefmans peach on the rocks",
+    "price": 4.20
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Kasteelbier Triple",
+    "price": 4.70
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Kasteelbier Donker",
+    "price": 5.20
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Tongerlo Bruin",
+    "price": 4.20
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Tongerlo Blond",
+    "price": 4.20
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Westmalle Dubbel",
+    "price": 4.60
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Westmalle Triple",
+    "price": 4.80
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Ribaldus tripel",
+    "price": 4.20
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Chimay Blauw",
+    "price": 5.20
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "Flierefluiter",
+    "price": 4.20,
+    "description": "Heerlijk Westels streekbier!"
+  },
+  {
+    "category": "Bieren op fles 🍺",
+    "name": "La chouffe blond",
+    "price": 4.60
+  },
+
+  {
+    "category": "0.0 🍺",
+    "name": "Kasteelbier Rouge 0,0%",
+    "price": 4.50
+  },
+  {
+    "category": "0.0 🍺",
+    "name": "Stella 0,0%",
+    "price": 3.00
+  },
+  {
+    "category": "0.0 🍺",
+    "name": "Liefmans on the rocks 0,0%",
+    "price": 4.20
+  },
+  {
+    "category": "0.0 🍺",
+    "name": "Liefmans peach on the rocks 0.0",
+    "price": 4.20
+  },
+  {
+    "category": "0.0 🍺",
+    "name": "Flandrien 0,0%",
+    "price": 4.30
+  },
+  {
+    "category": "0.0 🍺",
+    "name": "Chouffe alcoholvrij",
+    "price": 4.30
+  },
+
+  {
+    "category": "Dorstlessers 🧊",
+    "name": "Pomton",
+    "price": 6.80,
+    "description": "Pompelmoes & tonic"
+  },
+  {
+    "category": "Dorstlessers 🧊",
+    "name": "Pomme lien",
+    "price": 6.80,
+    "description": "Appelkers met toets van frisse citrus (Genoemd naar ons favoriete geitje)"
+  },
+  {
+    "category": "Dorstlessers 🧊",
+    "name": "Happy Emiel",
+    "price": 6.80,
+    "description": "Tropisch fruit & citrus. Genoemd naar ons grijze lammetje met kleurrijk karakter!"
+  },
+  {
+    "category": "Dorstlessers 🧊",
+    "name": "Gember Gaspard",
+    "price": 6.80,
+    "description": "Gember en Appel, vernoemd naar ons Kune Kune varken Gaspard"
+  },
+
+  {
+    "category": "Aperitieven🥂",
+    "name": "Aperol Spritz",
+    "price": 8.50
+  },
+  {
+    "category": "Aperitieven🥂",
+    "name": "Bernadette Spritz",
+    "price": 8.50,
+    "description": "Gelanceerd als moederdag-spritz nu vernoemd naar lama Bernadette. Aperol met een eigen twist!"
+  },
+  {
+    "category": "Aperitieven🥂",
+    "name": "LUX Sparkling - Glas",
+    "price": 6.50,
+    "description": "Onze frisse huisbubbel"
+  },
+
+  {
+    "category": "Cocktails 🍸",
+    "name": "Sangria",
+    "price": 9.50
+  },
+  {
+    "category": "Cocktails 🍸",
+    "name": "Karaf Sangria",
+    "price": 30.00
+  },
+  {
+    "category": "Cocktails 🍸",
+    "name": "Lazy Red Cheeks",
+    "price": 10.50
+  },
+  {
+    "category": "Cocktails 🍸",
+    "name": "Mojito",
+    "price": 10.50
+  },
+  {
+    "category": "Cocktails 🍸",
+    "name": "Strawberry Mojito",
+    "price": 10.50
+  },
+  {
+    "category": "Cocktails 🍸",
+    "name": "Lavender Mojito",
+    "price": 10.50
+  },
+  {
+    "category": "Cocktails 🍸",
+    "name": "Gin Swizzle",
+    "price": 10.50
+  },
+  {
+    "category": "Cocktails 🍸",
+    "name": "Mango Margarita",
+    "price": 10.50
+  },
+  {
+    "category": "Cocktails 🍸",
+    "name": "Moscow mule",
+    "price": 10.50
+  },
+
+  {
+    "category": "Mocktails 🍸",
+    "name": "Farme Mocktail (Huismocktail)",
+    "price": 8.50,
+    "description": "‘t Ooievaarsnest in een glas: Veel passie, klein beetje pit en hart- verwarmend."
+  },
+  {
+    "category": "Mocktails 🍸",
+    "name": "What-a-Melon! Delight",
+    "price": 8.50,
+    "description": "Met verse munt en blokjes watermeloen"
+  },
+  {
+    "category": "Mocktails 🍸",
+    "name": "Nojito",
+    "price": 8.50
+  },
+  {
+    "category": "Mocktails 🍸",
+    "name": "Strawberry Nojito",
+    "price": 8.50
+  },
+  {
+    "category": "Mocktails 🍸",
+    "name": "Lavender Nojito",
+    "price": 8.50
+  },
+  {
+    "category": "Mocktails 🍸",
+    "name": "Virgin mule",
+    "price": 8.50
+  },
+  {
+    "category": "Mocktails 🍸",
+    "name": "Virgin Spritz",
+    "price": 8.50
+  },
+  {
+    "category": "Mocktails 🍸",
+    "name": "Virgin Bernadette Spritz",
+    "price": 8.50
+  },
+
+  {
+    "category": "Wijnen 🍷",
+    "name": "Onverwacht Wit",
+    "price": 5.00
+  },
+  {
+    "category": "Wijnen 🍷",
+    "name": "Fles Onverwacht Wit",
+    "price": 27.00
+  },
+  {
+    "category": "Wijnen 🍷",
+    "name": "Onverwacht Rood",
+    "price": 5.00
+  },
+  {
+    "category": "Wijnen 🍷",
+    "name": "Fles Onverwacht Rood",
+    "price": 27.00
+  },
+  {
+    "category": "Wijnen 🍷",
+    "name": "Onverwacht Rosé",
+    "price": 5.00
+  },
+  {
+    "category": "Wijnen 🍷",
+    "name": "Fles Onverwacht Rosé",
+    "price": 27.00
+  },
+
+  {
+    "category": "Kombucha by Selia&Scob",
+    "name": "Kombucha Lavendel",
+    "price": 6.50,
+    "description": "100% natuurlijk, 100% Kombucha, 100% Lokaal (Balen) Pure gefermenteerde drank zonder toevoegingen"
+  },
+  {
+    "category": "Kombucha by Selia&Scob",
+    "name": "Kombucha Gember Citroen",
+    "price": 6.50
+  },
+
+  {
+    "category": "Warme dranken ☕",
+    "name": "Koffie - Merode Blend",
+    "price": 3.00
+  },
+  {
+    "category": "Warme dranken ☕",
+    "name": "Cappuccino - Merode Blend",
+    "price": 3.50,
+    "description": "Gestoomde melk"
+  },
+  {
+    "category": "Warme dranken ☕",
+    "name": "Warme Chocomelk",
+    "price": 3.00
+  },
+  {
+    "category": "Warme dranken ☕",
+    "name": "Thee - Earl Grey",
+    "price": 3.00
+  },
+  {
+    "category": "Warme dranken ☕",
+    "name": "Thee - Groene thee",
+    "price": 3.00
+  },
+  {
+    "category": "Warme dranken ☕",
+    "name": "Thee - Rooibos",
+    "price": 3.00
+  },
+  {
+    "category": "Warme dranken ☕",
+    "name": "Thee - Stermunt",
+    "price": 3.00
+  },
+
+  {
+    "category": "Croque",
+    "name": "Croque uit 't vuistje - Enkel",
+    "price": 4.50
+  },
+  {
+    "category": "Croque",
+    "name": "Croque uit 't vuistje - Dubbel",
+    "price": 8.00
+  },
+  {
+    "category": "Croque",
+    "name": "Croque Bolognaise Enkel",
+    "price": 7.50,
+    "description": "Uit 't vuistje met Bolognaise tussen"
+  },
+  {
+    "category": "Croque",
+    "name": "Croque Bolognaise Dubbel",
+    "price": 12.00,
+    "description": "Uit 't vuistje met Bolognaise tussen"
+  },
+
+  {
+    "category": "Fingerfood",
+    "name": "Portie Kaas",
+    "price": 8.50
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Portie Salami",
+    "price": 8.50
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Kaas - Salami",
+    "price": 12.00
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Bitterballen",
+    "price": 8.50,
+    "description": "8 stuks"
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Vegan Cauli wings",
+    "price": 8.00,
+    "description": "8 stuks"
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Crunchy Chicken mix",
+    "price": 9.50,
+    "description": "14 stuks"
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Flatbread met Tzatziki",
+    "price": 8.50
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Yakitori Spiesjes",
+    "price": 9.50,
+    "description": "6 stuks"
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Vegan Bitterballen",
+    "price": 8.50,
+    "description": "8 stuks"
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Chicken nuggets",
+    "price": 8.50,
+    "description": "8 stuks"
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Vegan Nuggets",
+    "price": 8.00,
+    "description": "8 stuks"
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Mini Loempias",
+    "price": 8.00,
+    "description": "8 stuks - Met Zoetzure saus"
+  },
+  {
+    "category": "Fingerfood",
+    "name": "Crunchy Vegan Balls",
+    "price": 9.50,
+    "description": "9 stuks"
+  },
+
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Apero plank",
+    "price": 17.50
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Apero plank XL",
+    "price": 24.50
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Nacho's",
+    "price": 12.00
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Loaded Nacho's",
+    "price": 18.50
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Loaded Nacho's Vegan",
+    "soldOut": true
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Potato Scoops",
+    "price": 8.50,
+    "description": "Ruime portie rustieke frietjes met Mayonaise"
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Loaded Potato Scoops",
+    "price": 18.50,
+    "description": "Onze signature dish: Rustieke frietjes met topping van pulled pork"
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Loaded Potato Scoops Vegan",
+    "soldOut": true,
+    "description": "Rustieke frietjes met topping van huisgemaakte BBQ Jackfruit"
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Sharing Pizza Margharita",
+    "price": 14.50
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Portie warm gemengd",
+    "price": 18.50,
+    "description": "16 stuks"
+  },
+  {
+    "category": "Sharing & Apero Plates 🍝",
+    "name": "Portie Farm gemengd",
+    "price": 32.50,
+    "description": "32 stuks + 4 stuks flatbread"
+  },
+
+  {
+    "category": "Snack & Snoep",
+    "name": "Duyvis Paprika Nootjes",
+    "price": 3.00
+  },
+  {
+    "category": "Snack & Snoep",
+    "name": "Lays Paprika Chips",
+    "price": 2.50
+  },
+  {
+    "category": "Snack & Snoep",
+    "name": "Lays Zoute Chips",
+    "price": 2.50
+  },
+  {
+    "category": "Snack & Snoep",
+    "name": "Lays Pickles Chips",
+    "price": 2.50
+  }
+]

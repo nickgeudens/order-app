@@ -1,7 +1,7 @@
 import * as React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { AnimatePresence, motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
@@ -10,9 +10,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        active: "bg-primary text-primary-foreground hover:bg-primary/90",
-        default:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        active: "text-primary-foreground hover:bg-primary/90",
+        default: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -28,43 +27,44 @@ const buttonVariants = cva(
   }
 );
 
+export interface NavButtonProps
+  extends React.ComponentProps<"button">,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+}
+
 export default function NavButton({
   className,
   variant,
   size,
   asChild = false,
+  children,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
+}: NavButtonProps) {
   const Comp = asChild ? Slot : "button";
 
   return (
-    <span className="relative inline-block">
+    <Comp
+      className={cn(
+        "relative overflow-hidden",
+        buttonVariants({ variant, size, className })
+      )}
+      {...props}
+    >
       <AnimatePresence initial={false}>
         {variant === "active" && (
-          <motion.div
+          <motion.span
+            key="background"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2 }}
             exit={{ opacity: 0, scale: 0 }}
-            key="background"
-            className={cn(
-              buttonVariants({ variant: "active", size, className }),
-              "absolute inset-0"
-            )}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0 bg-primary rounded-full"
           />
         )}
-        <Comp
-          className={cn(
-            buttonVariants({ variant, size, className }),
-            "bg-transparent relative"
-          )}
-          {...props}
-        ></Comp>
       </AnimatePresence>
-    </span>
+      <span className="relative z-10">{children}</span>
+    </Comp>
   );
 }
 
